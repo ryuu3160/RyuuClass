@@ -4,11 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+//コンストラクタ
 SORT::SORT(void)
 {
 
 }
 
+//デストラクタ
 SORT::~SORT(void)
 {
 
@@ -27,6 +29,7 @@ void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
 
 	TmpArray = new int[roop];//配列確保
 
+	//値の初期化
 	nGap = 1;
 	j = 0;
 	nTmp = 0;
@@ -64,15 +67,16 @@ void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
 		nGap /= 3;
 	}
 
+	//ソート後の値を引数として渡された配列に格納
 	switch (mode)
 	{
-	case SORT_MODE::ASCENDING:
+	case SORT_MODE::ASCENDING://昇順
 		for (i = 0; i < roop; i++)
 		{
 			Array[roop - i] = TmpArray[i];
 		}
 		break;
-	case SORT_MODE::DESCENDING:
+	case SORT_MODE::DESCENDING://降順
 		for (i = 0; i < roop; i++)
 		{
 			Array[i] = TmpArray[i];
@@ -80,5 +84,5 @@ void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
 		break;
 	}
 
-	delete[] TmpArray;//解放
+	delete[] TmpArray;//メモリ解放
 }

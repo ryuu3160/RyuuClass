@@ -1,4 +1,12 @@
-//Sort.h
+/*
+ * @file Sort.h
+ * @brief ソートプログラムのヘッダ
+ * @author 青木雄一郎
+ * @date 作成日：03 / 10 / 2024
+ * 
+ * @date 03/10 関数の追加 [IntegerSort]
+ */
+
 #ifndef _____SORT_H_____
 #define _____SORT_H_____
 

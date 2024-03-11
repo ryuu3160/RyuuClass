@@ -18,11 +18,18 @@ int main(void)
 		test[i] = i;
 	}
 
+	//‰Šú’l•\¦
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d,", test[i]);
+	}
+	printf("\n");
+
 	Sort.IntegerSort(test,sizeof(test),SORT::SORT_MODE::DESCENDING);
 
 	for (i = 0; i < 10; i++)
 	{
-		printf("%d\n", test[i]);
+		printf("%d,", test[i]);
 	}
 	
 	rewind(stdin);
