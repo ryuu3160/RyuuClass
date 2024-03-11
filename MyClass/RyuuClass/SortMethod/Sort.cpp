@@ -99,6 +99,7 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	int i,j;	//添え字
 	int nGap;	//ギャップ
 	int nTop;	//未整列部の先頭添え字
+	int nDigit; //文字の桁
 	char* szTmp;//データ一時保存場所
 	char* szpTmp;//ポインターキープ
 	char** szTmpArray;//全データ一時保存場所
@@ -115,12 +116,14 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	//作業スペースへの格納
 	for (i = 0, szpTmp = Array; i < nLine; i++,szpTmp += nWidth)
 	{
-		strcpy(szTmpArray[i], szpTmp);
+		strcpy_s(szTmpArray[i],nWidth, szpTmp);
+		szTmpArray[i][nWidth - 1] = '\0';
 	}
 
 	//値の初期化
 	nGap = 1;
 	j = 0;
+	nDigit = 0;
 
 	//ギャップを設定
 	while (nGap * 3 + 1 <= nLine)
@@ -136,14 +139,19 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 			while (nTop < nLine)	//整列処理
 			{
 				j = nTop;
-				while (j >= nGap && szTmpArray[j - nGap][0] < szTmpArray[j][0])	//挿入処理
+				while (szTmpArray[j - nGap][nDigit] == szTmpArray[j][nDigit])
 				{
-					strcpy(szTmp, szTmpArray[j]);
-					strcpy(szTmpArray[j],szTmpArray[j - nGap]);
-					strcpy(szTmpArray[j - nGap], szTmp);
+					nDigit++;
+				}
+				while (j >= nGap && szTmpArray[j - nGap][nDigit] < szTmpArray[j][nDigit])	//挿入処理
+				{
+					strcpy_s(szTmp, nWidth, szTmpArray[j]);
+					strcpy_s(szTmpArray[j], nWidth, szTmpArray[j - nGap]);
+					strcpy_s(szTmpArray[j - nGap], nWidth, szTmp);
 					j -= nGap;
 				}
 				nTop += nGap;
+				nDigit = 0;
 			}
 		}
 		nGap /= 3;
@@ -154,13 +162,13 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	case SORT_MODE::ASCENDING://昇順
 		for (i = 0; i < nLine; i++, Array += nWidth)
 		{
-			strcpy(Array, szTmpArray[nLine - i - 1]);
+			strcpy_s(Array, nWidth, szTmpArray[nLine - i - 1]);
 		}
 		break;
 	case SORT_MODE::DESCENDING://降順
 		for (i = 0; i < nLine; i++, Array += nWidth)
 		{
-			strcpy(Array, szTmpArray[i]);
+			strcpy_s(Array, nWidth, szTmpArray[i]);
 		}
 		break;
 	}
