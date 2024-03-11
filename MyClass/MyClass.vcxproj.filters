@@ -21,16 +21,16 @@
     <ClCompile Include="ProgramTest.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SortMethod\Sort.cpp">
+    <ClCompile Include="RyuuClass\SortMethod\Sort.cpp">
       <Filter>ソース ファイル\sort</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SortMethod\Sort.h">
-      <Filter>ソース ファイル\sort</Filter>
-    </ClInclude>
     <ClInclude Include="RyuuClass.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuuClass\SortMethod\Sort.h">
+      <Filter>ソース ファイル\sort</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

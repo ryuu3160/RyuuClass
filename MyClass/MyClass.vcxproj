@@ -130,11 +130,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp" />
-    <ClCompile Include="SortMethod\Sort.cpp" />
+    <ClCompile Include="RyuuClass\SortMethod\Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h" />
-    <ClInclude Include="SortMethod\Sort.h" />
+    <ClInclude Include="RyuuClass\SortMethod\Sort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

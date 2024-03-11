@@ -9,6 +9,6 @@
 #define _____RYUU_CLASS_H_____
 
 //===== METHOD =====
-#include "SortMethod/Sort.h"
+#include "RyuuClass/SortMethod/Sort.h"
 
 #endif //!_____RYUU_CLASS_H_____
