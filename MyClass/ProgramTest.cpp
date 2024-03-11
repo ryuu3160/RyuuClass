@@ -20,7 +20,14 @@ int main(void)
 		test[i] = i;
 	}*/
 
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < 5; i++)
+	{
+		szCmp[0] = 'o' + i;
+		szCmp[1] = '\0';
+		szCmp[49] = '\0';
+		strcpy(szTest[i], szCmp);
+	}
+	for (i = 5; i < 10; i++)
 	{
 		szCmp[0] = 'a' + i;
 		szCmp[1] = '\0';
