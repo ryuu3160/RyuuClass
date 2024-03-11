@@ -7,7 +7,8 @@
 //コンストラクタ
 SORT::SORT(void)
 {
-
+	nWidth = 0;
+	nLine = 0;
 }
 
 //デストラクタ
@@ -85,4 +86,93 @@ void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
 	}
 
 	delete[] TmpArray;//メモリ解放
+}
+
+void SORT::SetStrArrayData(int nSize, int nWidth)
+{
+	this->nWidth = nWidth;
+	this->nLine = nSize / nWidth;
+}
+
+void SORT::StringSort(char* Array, SORT_MODE mode) const
+{
+	int i,j;	//添え字
+	int nGap;	//ギャップ
+	int nTop;	//未整列部の先頭添え字
+	char* szTmp;//データ一時保存場所
+	char* szpTmp;//ポインターキープ
+	char** szTmpArray;//全データ一時保存場所
+
+	//2次元配列の確保
+	szTmpArray = new char*[nLine];
+	for (i = 0; i < nLine; i++)
+	{
+		szTmpArray[i] = new char[nWidth];
+	}
+	//配列確保
+	szTmp = new char[nWidth];
+
+	//作業スペースへの格納
+	for (i = 0, szpTmp = Array; i < nLine; i++,szpTmp += nWidth)
+	{
+		strcpy(szTmpArray[i], szpTmp);
+	}
+
+	//値の初期化
+	nGap = 1;
+	j = 0;
+
+	//ギャップを設定
+	while (nGap * 3 + 1 <= nLine)
+	{
+		nGap = nGap * 3 + 1;
+	}
+
+	while (nGap > 0)	//整列ループ
+	{
+		for (i = 0; i < nGap; i++)	//挿入法ループ
+		{
+			nTop = nGap + i;	//未整列部の先頭要素の添え字
+			while (nTop < nLine)	//整列処理
+			{
+				j = nTop;
+				while (j >= nGap && szTmpArray[j - nGap][0] < szTmpArray[j][0])	//挿入処理
+				{
+					strcpy(szTmp, szTmpArray[j]);
+					strcpy(szTmpArray[j],szTmpArray[j - nGap]);
+					strcpy(szTmpArray[j - nGap], szTmp);
+					j -= nGap;
+				}
+				nTop += nGap;
+			}
+		}
+		nGap /= 3;
+	}
+
+	switch (mode)
+	{
+	case SORT_MODE::ASCENDING://昇順
+		for (i = 0; i < nLine; i++, Array += nWidth)
+		{
+			strcpy(Array, szTmpArray[nLine - i - 1]);
+		}
+		break;
+	case SORT_MODE::DESCENDING://降順
+		for (i = 0; i < nLine; i++, Array += nWidth)
+		{
+			strcpy(Array, szTmpArray[i]);
+		}
+		break;
+	}
+
+	//メモリ解放
+	for (i = 0; i < nLine; i++)
+	{
+		delete[] szTmpArray[i];
+		szTmpArray[i] = NULL;//ヌルポ
+	}
+	delete[] szTmpArray;
+	szTmpArray = NULL;//ヌルポ
+	delete[] szTmp;
+	szTmp = NULL;//ヌルポ
 }
