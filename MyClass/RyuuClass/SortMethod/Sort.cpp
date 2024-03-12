@@ -11,6 +11,13 @@ SORT::SORT(void)
 	nLine = 0;
 }
 
+//コンストラクタ2
+SORT::SORT(int nLine,int nWidth)
+{
+	this->nLine = nLine;
+	this->nWidth = nWidth;
+}
+
 //デストラクタ
 SORT::~SORT(void)
 {
@@ -101,7 +108,7 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	int nTop;	//未整列部の先頭添え字
 	int nDigit; //文字の桁
 	char* szTmp;//データ一時保存場所
-	char* szpTmp;//ポインターキープ
+	char* szpKeep;//ポインターキープ
 	char** szTmpArray;//全データ一時保存場所
 
 	//2次元配列の確保
@@ -114,9 +121,9 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	szTmp = new char[nWidth];
 
 	//作業スペースへの格納
-	for (i = 0, szpTmp = Array; i < nLine; i++,szpTmp += nWidth)
+	for (i = 0, szpKeep = Array; i < nLine; i++,szpKeep += nWidth)
 	{
-		strcpy_s(szTmpArray[i],nWidth, szpTmp);
+		strcpy_s(szTmpArray[i],nWidth, szpKeep);
 		szTmpArray[i][nWidth - 1] = '\0';
 	}
 
@@ -139,7 +146,7 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 			while (nTop < nLine)	//整列処理
 			{
 				j = nTop;
-				while (szTmpArray[j - nGap][nDigit] == szTmpArray[j][nDigit])
+				while (szTmpArray[j - nGap][nDigit] == szTmpArray[j][nDigit] && nDigit < nWidth - 1)//n文字目が同じ文字だった場合、次の文字を比較
 				{
 					nDigit++;
 				}
@@ -151,7 +158,7 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 					j -= nGap;
 				}
 				nTop += nGap;
-				nDigit = 0;
+				nDigit = 0;//比較文字位置を先頭にリセット
 			}
 		}
 		nGap /= 3;
@@ -183,4 +190,5 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	szTmpArray = NULL;//ヌルポ
 	delete[] szTmp;
 	szTmp = NULL;//ヌルポ
+	szpKeep = NULL;//ヌルポ
 }

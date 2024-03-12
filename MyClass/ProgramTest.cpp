@@ -9,7 +9,7 @@
 int main(void)
 {
 	//----- SORT -----
-	SORT Sort;
+	SORT Sort(10,50);
 	int i;
 	char szTest[10][50];
 	char szCmp[50];
@@ -25,14 +25,14 @@ int main(void)
 		szCmp[0] = 'o' + i;
 		szCmp[1] = '\0';
 		szCmp[49] = '\0';
-		strcpy(szTest[i], szCmp);
+		strcpy_s(szTest[i], szCmp);
 	}
 	for (i = 5; i < 10; i++)
 	{
 		szCmp[0] = 'a' + i;
 		szCmp[1] = '\0';
 		szCmp[49] = '\0';
-		strcpy(szTest[i], szCmp);
+		strcpy_s(szTest[i], szCmp);
 	}
 
 	//初期値表示
@@ -48,7 +48,7 @@ int main(void)
 
 	//Sort.IntegerSort(test,sizeof(test),SORT::SORT_MODE::DESCENDING);
 
-	Sort.SetStrArrayData(sizeof(szTest), sizeof(szTest[0]));
+	//Sort.SetStrArrayData(sizeof(szTest), sizeof(szTest[0]));
 	Sort.StringSort(szTest[0],SORT::SORT_MODE::DESCENDING);
 
 	//ソート後表示
@@ -62,5 +62,5 @@ int main(void)
 	}
 	
 	rewind(stdin);
-	getchar();
+	static_cast<void>(getchar());
 }

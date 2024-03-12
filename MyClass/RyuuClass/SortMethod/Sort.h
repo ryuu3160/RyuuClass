@@ -2,9 +2,10 @@
  * @file Sort.h
  * @brief ソートプログラムのヘッダ
  * @author 青木雄一郎
- * @date 作成日：03 / 10 / 2024
+ * @date 作成日：03/10.2024
  * 
  * @date 03/10 関数の追加 [IntegerSort]
+ * @date 03/11 関数の追加 [SetStrArrayData,StringSort]
  */
 
 #ifndef _____SORT_H_____
@@ -13,8 +14,8 @@
 class SORT
 {
 private:
-	int nWidth;
-	int nLine;
+	int nWidth;	//2次元配列の1列の幅
+	int nLine;	//2次元配列の行数
 public:
 	enum class SORT_MODE : unsigned int
 	{
@@ -23,6 +24,15 @@ public:
 	};
 
 	SORT();	//コンストラクタ
+	/**
+	 * @fn
+	 * @brief 引数ありコンストラクタ
+	 * @param [nWidth] 2次元配列の1列の幅
+	 * @param [nLine] 2次元配列の行数
+	 * @detail	ソートする文字列型2次元配列の大きさが変わらない場合、コンストラクタで指定しちゃった方が良いかも
+	 * @memo	このコンストラクタを呼び出した場合は、SetStrArrayData関数を呼び出す必要はない
+	 */
+	SORT(int nLine, int nWidth);
 	~SORT();//デストラクタ
 
 	/**
