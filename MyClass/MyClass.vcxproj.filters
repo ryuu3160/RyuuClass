@@ -13,7 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="ソース ファイル\sort">
+    <Filter Include="ソース ファイル\RandomModule">
+      <UniqueIdentifier>{c4f4b957-cbaa-4abf-8282-7ed9210218bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\SortMethod">
       <UniqueIdentifier>{905427de-ee52-4362-af41-23ca7d50c1cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -22,7 +25,10 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="RyuuClass\SortMethod\Sort.cpp">
-      <Filter>ソース ファイル\sort</Filter>
+      <Filter>ソース ファイル\SortMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuuClass\RandomModule\Random.cpp">
+      <Filter>ソース ファイル\RandomModule</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -30,7 +36,10 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="RyuuClass\SortMethod\Sort.h">
-      <Filter>ソース ファイル\sort</Filter>
+      <Filter>ソース ファイル\SortMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuuClass\RandomModule\Random.h">
+      <Filter>ソース ファイル\RandomModule</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

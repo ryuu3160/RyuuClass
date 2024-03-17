@@ -5,11 +5,27 @@
 #include <string.h>
 #include <math.h>
 #include <conio.h>
+#include <iterator>
+
+void SortTest(void);
+void RandomTest(void);
 
 int main(void)
 {
 	//----- SORT -----
-	SORT Sort(10,50);
+	//SortTest();
+
+	//----- RANDOM -----
+	RandomTest();
+	
+	rewind(stdin);
+	static_cast<void>(getchar());
+}
+
+void SortTest(void)
+{
+	//----- SORT -----
+	SORT Sort(10, 50);
 	int i;
 	char szTest[10][50];
 	char szCmp[50];
@@ -49,7 +65,7 @@ int main(void)
 	//Sort.IntegerSort(test,sizeof(test),SORT::SORT_MODE::DESCENDING);
 
 	//Sort.SetStrArrayData(sizeof(szTest), sizeof(szTest[0]));
-	Sort.StringSort(szTest[0],SORT::SORT_MODE::DESCENDING);
+	Sort.StringSort(szTest[0], SORT::SORT_MODE::DESCENDING);
 
 	//ソート後表示
 	/*for (i = 0; i < 10; i++)
@@ -60,7 +76,14 @@ int main(void)
 	{
 		printf("%s", szTest[i]);
 	}
+}
+
+void RandomTest(void)
+{
+	RANDOM Rand;
+
+	char szTest[100];
+	Rand.RandomChoice(szTest,"ttttt","tasf","fjaosi",NULL);
 	
-	rewind(stdin);
-	static_cast<void>(getchar());
+	printf("%s", szTest);
 }

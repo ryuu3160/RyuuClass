@@ -10,5 +10,6 @@
 
 //===== METHOD =====
 #include "RyuuClass/SortMethod/Sort.h"
+#include "RyuuClass/RandomModule/Random.h"
 
 #endif //!_____RYUU_CLASS_H_____

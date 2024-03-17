@@ -130,10 +130,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp" />
+    <ClCompile Include="RyuuClass\RandomModule\Random.cpp" />
     <ClCompile Include="RyuuClass\SortMethod\Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h" />
+    <ClInclude Include="RyuuClass\RandomModule\Random.h" />
     <ClInclude Include="RyuuClass\SortMethod\Sort.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
