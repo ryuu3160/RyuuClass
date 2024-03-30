@@ -9,6 +9,8 @@
 #ifndef _____RANDOM_MODULE_H_____
 #define _____RANDOM_MODULE_H_____
 
+namespace RYUU
+{
 class RANDOM
 {
 private:
@@ -116,5 +118,6 @@ public:
 	 */
 	void RandomChoice(char* pszInput, ...) const;
 };
+}
 
 #endif // !_____RANDOM_MODULE_H_____

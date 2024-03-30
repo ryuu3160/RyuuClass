@@ -8,6 +8,9 @@
 #include <stdarg.h>
 #include <string>
 
+namespace RYUU
+{
+
 RANDOM::RANDOM(void)
 {
 	this->nSeed = static_cast<unsigned int>(time(NULL));
@@ -178,4 +181,6 @@ void RANDOM::RandomChoice(char* pszInput, ...) const
 	strncpy_s(pszInput, nLength, szInputElement, nLength);
 
 	delete[] szInputElement;//ƒƒ‚ƒŠŠJ•ú
+}
+
 }

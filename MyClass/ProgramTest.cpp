@@ -24,6 +24,7 @@ int main(void)
 
 void SortTest(void)
 {
+	using namespace RYUU;
 	//----- SORT -----
 	SORT Sort(10, 50);
 	int i;
@@ -80,6 +81,7 @@ void SortTest(void)
 
 void RandomTest(void)
 {
+	using namespace RYUU;
 	RANDOM Rand;
 
 	char szTest[100];

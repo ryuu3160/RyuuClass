@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+namespace RYUU
+{
 //コンストラクタ
 SORT::SORT(void)
 {
@@ -191,4 +193,6 @@ void SORT::StringSort(char* Array, SORT_MODE mode) const
 	delete[] szTmp;
 	szTmp = NULL;//ヌルポ
 	szpKeep = NULL;//ヌルポ
+}
+
 }
