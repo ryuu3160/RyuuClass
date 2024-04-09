@@ -19,6 +19,9 @@
     <Filter Include="ソース ファイル\SortMethod">
       <UniqueIdentifier>{905427de-ee52-4362-af41-23ca7d50c1cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\OutPutLog">
+      <UniqueIdentifier>{0c560c5f-c593-4d94-ad70-c9965f7311bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp">
@@ -30,6 +33,9 @@
     <ClCompile Include="RyuuClass\RandomModule\Random.cpp">
       <Filter>ソース ファイル\RandomModule</Filter>
     </ClCompile>
+    <ClCompile Include="RyuuClass\OutPutLog\OutPutLog.cpp">
+      <Filter>ソース ファイル\OutPutLog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h">
@@ -40,6 +46,9 @@
     </ClInclude>
     <ClInclude Include="RyuuClass\RandomModule\Random.h">
       <Filter>ソース ファイル\RandomModule</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuuClass\OutPutLog\OutPutLog.h">
+      <Filter>ソース ファイル\OutPutLog</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
