@@ -15,5 +15,6 @@
 #include "RyuuClass/SortMethod/Sort.h"
 #include "RyuuClass/RandomModule/Random.h"
 #include "RyuuClass/OutPutLog/OutPutLog.h"
+#include "RyuuClass/PositionData/Pos.h"
 
 #endif //!_____RYUU_CLASS_H_____

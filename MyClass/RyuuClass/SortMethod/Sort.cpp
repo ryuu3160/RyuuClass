@@ -7,26 +7,26 @@
 namespace RYUU
 {
 //コンストラクタ
-SORT::SORT(void)
+Sort::Sort(void)
 {
 	nWidth = 0;
 	nLine = 0;
 }
 
 //コンストラクタ2
-SORT::SORT(int nLine,int nWidth)
+Sort::Sort(int nLine,int nWidth)
 {
 	this->nLine = nLine;
 	this->nWidth = nWidth;
 }
 
 //デストラクタ
-SORT::~SORT(void)
+Sort::~Sort(void)
 {
 
 }
 
-void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
+void Sort::IntegerSort(int* Array,int size,SORT_MODE mode) const
 {
 	int i,j;	//添え字
 	int nTmp;	//データ一時保存場所
@@ -97,13 +97,13 @@ void SORT::IntegerSort(int* Array,int size,SORT_MODE mode) const
 	delete[] TmpArray;//メモリ解放
 }
 
-void SORT::SetStrArrayData(int nSize, int nWidth)
+void Sort::SetStrArrayData(int nSize, int nWidth)
 {
 	this->nWidth = nWidth;
 	this->nLine = nSize / nWidth;
 }
 
-void SORT::StringSort(char* Array, SORT_MODE mode) const
+void Sort::StringSort(char* Array, SORT_MODE mode) const
 {
 	int i,j;	//添え字
 	int nGap;	//ギャップ

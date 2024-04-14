@@ -9,6 +9,7 @@
 
 void SortTest(void);
 void RandomTest(void);
+void PosTest();
 
 int main(void)
 {
@@ -17,6 +18,9 @@ int main(void)
 
 	//----- RANDOM -----
 	RandomTest();
+
+	//----- POS -----
+	PosTest();
 	
 	rewind(stdin);
 	static_cast<void>(getchar());
@@ -26,7 +30,7 @@ void SortTest(void)
 {
 	using namespace RYUU;
 	//----- SORT -----
-	SORT Sort(10, 50);
+	Sort Sort(10, 50);
 	int i;
 	char szTest[10][50];
 	char szCmp[50];
@@ -63,10 +67,10 @@ void SortTest(void)
 	}
 	printf("\n");
 
-	//Sort.IntegerSort(test,sizeof(test),SORT::SORT_MODE::DESCENDING);
+	//Sort.IntegerSort(test,sizeof(test),Sort::SORT_MODE::DESCENDING);
 
 	//Sort.SetStrArrayData(sizeof(szTest), sizeof(szTest[0]));
-	Sort.StringSort(szTest[0], SORT::SORT_MODE::DESCENDING);
+	Sort.StringSort(szTest[0], Sort::SORT_MODE::DESCENDING);
 
 	//ソート後表示
 	/*for (i = 0; i < 10; i++)
@@ -82,10 +86,18 @@ void SortTest(void)
 void RandomTest(void)
 {
 	using namespace RYUU;
-	RANDOM Rand;
+	Random Rand;
 
 	char szTest[100];
 	Rand.RandomChoice(szTest,"ttttt","tasf","fjaosi",NULL);
 	
 	printf("%s", szTest);
+}
+
+void PosTest()
+{
+	using namespace RYUU;
+	Pos<int> pos;
+
+
 }

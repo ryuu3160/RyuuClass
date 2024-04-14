@@ -22,6 +22,9 @@
     <Filter Include="ソース ファイル\OutPutLog">
       <UniqueIdentifier>{0c560c5f-c593-4d94-ad70-c9965f7311bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\PositionData">
+      <UniqueIdentifier>{be469be4-af42-4d0c-bc63-bf4520c439a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp">
@@ -36,6 +39,9 @@
     <ClCompile Include="RyuuClass\OutPutLog\OutPutLog.cpp">
       <Filter>ソース ファイル\OutPutLog</Filter>
     </ClCompile>
+    <ClCompile Include="RyuuClass\PositionData\Pos.cpp">
+      <Filter>ソース ファイル\PositionData</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h">
@@ -49,6 +55,9 @@
     </ClInclude>
     <ClInclude Include="RyuuClass\OutPutLog\OutPutLog.h">
       <Filter>ソース ファイル\OutPutLog</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuuClass\PositionData\Pos.h">
+      <Filter>ソース ファイル\PositionData</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

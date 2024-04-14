@@ -13,7 +13,7 @@
 
 namespace RYUU
 {
-class SORT
+class Sort
 {
 private:
 	int nWidth;	//2次元配列の1列の幅
@@ -25,7 +25,7 @@ public:
 		DESCENDING,	//降順
 	};
 
-	SORT();	//コンストラクタ
+	Sort();	//コンストラクタ
 	/**
 		* @fn
 		* @brief 引数ありコンストラクタ
@@ -34,15 +34,15 @@ public:
 		* @detail	ソートする文字列型2次元配列の大きさが変わらない場合、コンストラクタで指定しちゃった方が良いかも
 		* @memo	このコンストラクタを呼び出した場合は、SetStrArrayData関数を呼び出す必要はない
 		*/
-	SORT(int nLine, int nWidth);
-	~SORT();//デストラクタ
+	Sort(int nLine, int nWidth);
+	~Sort();//デストラクタ
 
 	/**
 		* @fn
 		* @brief 整数型の配列をソートする
 		* @param [*Array] ソートしたい配列名
 		* @param [size] 配列の全体サイズ 記入方式:sizeof(配列名)
-		* @param [mode] 昇順or降順の指定 記入方式:SORT::SORT_MODE::ASCENDING or DESCENDING
+		* @param [mode] 昇順or降順の指定 記入方式:Sort::SORT_MODE::ASCENDING or DESCENDING
 		* @return なし
 		* @detail	ソートの方式はシェルソート
 		* @memo	配列の要素数は配列のサイズから求めるため、要素数が分からない配列であっても使用可能
@@ -66,7 +66,7 @@ public:
 		* @brief 文字列型の2次元配列をソートする(1行1文とみなす)
 		* @brief この関数を呼び出す前に、必ずSetStrArrayData関数を呼び出すこと
 		* @param [*Array] 2次元配列へのポインタ 記入方式:配列名[0]
-		* @param [mode] 昇順or降順の指定 記入方式:SORT::SORT_MODE::ASCENDING or DESCENDING
+		* @param [mode] 昇順or降順の指定 記入方式:Sort::SORT_MODE::ASCENDING or DESCENDING
 		* @return なし
 		* @detail	ソートの方式はシェルソート
 		* @memo	配列の要素数や列数などは先にSetStrArrayData関数で設定するため、引数として与える必要はない

@@ -131,12 +131,14 @@
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp" />
     <ClCompile Include="RyuuClass\OutPutLog\OutPutLog.cpp" />
+    <ClCompile Include="RyuuClass\PositionData\Pos.cpp" />
     <ClCompile Include="RyuuClass\RandomModule\Random.cpp" />
     <ClCompile Include="RyuuClass\SortMethod\Sort.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h" />
     <ClInclude Include="RyuuClass\OutPutLog\OutPutLog.h" />
+    <ClInclude Include="RyuuClass\PositionData\Pos.h" />
     <ClInclude Include="RyuuClass\RandomModule\Random.h" />
     <ClInclude Include="RyuuClass\SortMethod\Sort.h" />
   </ItemGroup>

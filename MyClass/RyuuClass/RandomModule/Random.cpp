@@ -11,41 +11,41 @@
 namespace RYUU
 {
 
-RANDOM::RANDOM(void)
+Random::Random(void)
 {
 	this->nSeed = static_cast<unsigned int>(time(NULL));
 	srand(this->nSeed);
 }
 
-RANDOM::RANDOM(unsigned int nSeed)
+Random::Random(unsigned int nSeed)
 {
 	this->nSeed = nSeed;
 	srand(this->nSeed);
 }
 
-RANDOM::~RANDOM(void)
+Random::~Random(void)
 {
 	
 }
 
-void RANDOM::SetSeedTime(void)
+void Random::SetSeedTime(void)
 {
 	this->nSeed = static_cast<unsigned int>(time(NULL));
 	srand(this->nSeed);
 }
 
-void RANDOM::SetSeed(unsigned int nSeed)
+void Random::SetSeed(unsigned int nSeed)
 {
 	this->nSeed = nSeed;
 	srand(this->nSeed);
 }
 
-unsigned int RANDOM::GetSeed(void) const
+unsigned int Random::GetSeed(void) const
 {
 	return this->nSeed;
 }
 
-int RANDOM::RandomInt(int nMax, bool bIncludeZero) const
+int Random::RandomInt(int nMax, bool bIncludeZero) const
 {
 	int nInZero;
 
@@ -63,7 +63,7 @@ int RANDOM::RandomInt(int nMax, bool bIncludeZero) const
 	return rand() % nMax + nInZero;
 }
 
-int RANDOM::RandomIntRange(int nMax, int nMin) const
+int Random::RandomIntRange(int nMax, int nMin) const
 {
 	nMax++;
 	nMax -= nMin;
@@ -72,7 +72,7 @@ int RANDOM::RandomIntRange(int nMax, int nMin) const
 	return rand() % nMax + nMin;
 }
 
-float RANDOM::RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const
+float Random::RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const
 {
 	float fRandom;
 	int nSetPointPos;
@@ -101,7 +101,7 @@ float RANDOM::RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const
 	return fRandom;
 }
 
-float RANDOM::RandomFloatRange(int nMax, int nMin, int nPointPos) const
+float Random::RandomFloatRange(int nMax, int nMin, int nPointPos) const
 {
 	float fRandom;
 	int nSetPointPos;
@@ -126,7 +126,7 @@ float RANDOM::RandomFloatRange(int nMax, int nMin, int nPointPos) const
 	return fRandom;
 }
 
-void RANDOM::RandomChoice(char* pszInput, ...) const
+void Random::RandomChoice(char* pszInput, ...) const
 {
 	int nRandom;
 	int nCount = 0;

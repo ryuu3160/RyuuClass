@@ -11,7 +11,7 @@
 
 namespace RYUU
 {
-class RANDOM
+class Random
 {
 private:
 	unsigned int nSeed;
@@ -24,16 +24,16 @@ public:
 	 * @brief 呼び出し時の時間がシード値として記録される
 	 * @detail	シード値を特に決めない場合はこのコンストラクタを使用する
 	 */
-	RANDOM();
+	Random();
 	/**
 	 * @fn
 	 * @brief 引数ありコンストラクタ
 	 * @brief 引数がシード値として記録される
 	 * @detail	シード値を指定したい場合はこのコンストラクタを使用する
 	 */
-	RANDOM(unsigned int nSeed);
+	Random(unsigned int nSeed);
 
-	~RANDOM();//デストラクタ
+	~Random();//デストラクタ
 
 	/**
 	 * @fn
