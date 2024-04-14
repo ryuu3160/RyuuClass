@@ -3,13 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <string>
+#include <vector>
 #include <math.h>
 #include <conio.h>
 #include <iterator>
 
 void SortTest(void);
 void RandomTest(void);
-void PosTest();
+void PosTest(void);
 
 int main(void)
 {
@@ -91,13 +93,18 @@ void RandomTest(void)
 	char szTest[100];
 	Rand.RandomChoice(szTest,"ttttt","tasf","fjaosi",NULL);
 	
-	printf("%s", szTest);
+	printf("%s\n", szTest);
 }
 
-void PosTest()
+void PosTest(void)
 {
 	using namespace RYUU;
 	Pos<int> pos;
+	int x = 0, y = 0,z = 0;
+	pos.SetPos(10, 20,30);
+	pos.GetPos(z, "z");
+	pos.GetPos(x, y, "xy");
 
+	printf("x:%d\ny:%d\nz:%d\n", x, y,z);
 
 }
