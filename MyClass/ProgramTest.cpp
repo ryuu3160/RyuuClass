@@ -1,6 +1,7 @@
 //ProgramTest.cpp
 #include "RyuuClass.h"
 #include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <string.h>
 #include <string>
@@ -16,14 +17,15 @@ void PosTest(void);
 int main(void)
 {
 	//----- SORT -----
-	//SortTest();
-
+	SortTest();
+	std::cout << std::endl << std::endl;
 	//----- RANDOM -----
 	RandomTest();
-
+	std::cout << std::endl;
 	//----- POS -----
 	PosTest();
-	
+	std::cout << std::endl;
+
 	rewind(stdin);
 	static_cast<void>(getchar());
 }
@@ -100,11 +102,19 @@ void PosTest(void)
 {
 	using namespace RYUU;
 	Pos<int> pos;
+	Pos<int> pos2;
+	Pos<int> pos3;
 	int x = 0, y = 0,z = 0;
+
 	pos.SetPos(10, 20,30);
+	pos2.SetPos(50, 50, 50);
+	pos3.SetPos(60, 70, 80);
+
+	pos += pos2;
+
 	pos.GetPos(z, "z");
 	pos.GetPos(x, y, "xy");
 
 	printf("x:%d\ny:%d\nz:%d\n", x, y,z);
-
+	printf("n:%d\n", pos == pos3);
 }
