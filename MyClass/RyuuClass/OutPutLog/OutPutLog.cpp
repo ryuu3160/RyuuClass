@@ -8,7 +8,7 @@ namespace RYUU
 {
 void Error(LPCSTR msg)
 {
-	MessageBox(NULL, msg, "Error", MB_OK);
+	MessageBox(NULL, msg, "Error", MB_OK | MB_ICONERROR);
 }
 
 void OutputDebug(std::string DebugMsg)
