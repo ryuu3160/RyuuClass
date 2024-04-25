@@ -16,6 +16,7 @@ namespace RYUU
 {
 /// @brief エラーのメッセージボックスを表示する
 /// @param [msg] エラーメッセージ
+/// @memo ボタンはOKのみ
 void Error(LPCSTR msg);
 
 /// @brief デバッグをコンソールに表示する
