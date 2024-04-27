@@ -6,8 +6,7 @@
  *
  * @date 04/14 Šî”Õì¬
  */
-#ifndef _____POS_H_____
-#define _____POS_H_____
+#pragma once
 
 namespace RYUU
 {
@@ -279,5 +278,3 @@ int RYUU::Pos<T>::operator==(const Pos& rhs)
 
 	return result;
 }
-
-#endif // !_____POS_H_____

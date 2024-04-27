@@ -7,9 +7,7 @@
  * @date 03/10 ŠÖ”‚Ì’Ç‰Á [IntegerSort]
  * @date 03/11 ŠÖ”‚Ì’Ç‰Á [SetStrArrayData,StringSort]
  */
-
-#ifndef _____SORT_H_____
-#define _____SORT_H_____
+#pragma once
 
 namespace RYUU
 {
@@ -75,5 +73,3 @@ public:
 
 };
 }
-
-#endif // !_____SORT_H_____

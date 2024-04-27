@@ -6,8 +6,7 @@
  *
  * @date 03/10 ä÷êîÇÃí«â¡ [IntegerRandom]
  */
-#ifndef _____RANDOM_MODULE_H_____
-#define _____RANDOM_MODULE_H_____
+#pragma once
 
 namespace RYUU
 {
@@ -119,5 +118,3 @@ public:
 	void RandomChoice(char* pszInput, ...) const;
 };
 }
-
-#endif // !_____RANDOM_MODULE_H_____

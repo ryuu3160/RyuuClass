@@ -7,14 +7,10 @@
  * @date 03/17.2024 RANDOMクラスを追加
  * @date 03/31/2024 クラスをnamespace[RYUU]で統合
  */
-
-#ifndef _____RYUU_CLASS_H_____
-#define _____RYUU_CLASS_H_____
+#pragma once
 
 //===== METHOD =====
 #include "RyuuClass/SortMethod/Sort.h"
 #include "RyuuClass/RandomModule/Random.h"
 #include "RyuuClass/OutPutLog/OutPutLog.h"
 #include "RyuuClass/PositionData/Pos.h"
-
-#endif //!_____RYUU_CLASS_H_____

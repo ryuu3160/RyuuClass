@@ -6,8 +6,7 @@
  *
  * @date 04/05 関数の追加
  */
-#ifndef _____OUT_PUT_LOG_H_____
-#define _____OUT_PUT_LOG_H_____
+#pragma once
 
 #include <sstream>
 #include <Windows.h>
@@ -23,5 +22,3 @@ void Error(LPCSTR msg);
 /// @param [DebugMsg] 表示する文字列へのポインタ
 void OutputDebug(std::string DebugMsg);
 }
-
-#endif // !_____OUT_PUT_LOG_H_____
