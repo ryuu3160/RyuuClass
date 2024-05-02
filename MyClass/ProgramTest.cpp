@@ -92,10 +92,10 @@ void RandomTest(void)
 	using namespace RYUU;
 	Random Rand;
 
-	char szTest[100];
-	Rand.RandomChoice(szTest,"ttttt","tasf","fjaosi",NULL);
+	std::string ssTest;
+	ssTest = Rand.Choice("ttttt","tasf","fjaosi",NULL);
 	
-	printf("%s\n", szTest);
+	std::cout << ssTest << std::endl;
 }
 
 void PosTest(void)
