@@ -2,7 +2,6 @@
 #include "Random.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <time.h>
 #include <math.h>
 #include <stdarg.h>
@@ -13,14 +12,14 @@ namespace RYUU
 
 Random::Random(void)
 {
-	this->nSeed = static_cast<unsigned int>(time(NULL));
-	srand(this->nSeed);
+	this->m_nSeed = static_cast<unsigned int>(time(NULL));
+	srand(this->m_nSeed);
 }
 
 Random::Random(unsigned int nSeed)
 {
-	this->nSeed = nSeed;
-	srand(this->nSeed);
+	this->m_nSeed = nSeed;
+	srand(this->m_nSeed);
 }
 
 Random::~Random(void)
@@ -30,22 +29,22 @@ Random::~Random(void)
 
 void Random::SetSeedTime(void)
 {
-	this->nSeed = static_cast<unsigned int>(time(NULL));
-	srand(this->nSeed);
+	this->m_nSeed = static_cast<unsigned int>(time(NULL));
+	srand(this->m_nSeed);
 }
 
 void Random::SetSeed(unsigned int nSeed)
 {
-	this->nSeed = nSeed;
-	srand(this->nSeed);
+	this->m_nSeed = nSeed;
+	srand(this->m_nSeed);
 }
 
 unsigned int Random::GetSeed(void) const
 {
-	return this->nSeed;
+	return this->m_nSeed;
 }
 
-int Random::RandomInt(int nMax, bool bIncludeZero) const
+int Random::GetRandom(int nMax, bool bIncludeZero) const
 {
 	int nInZero;
 
@@ -63,7 +62,7 @@ int Random::RandomInt(int nMax, bool bIncludeZero) const
 	return rand() % nMax + nInZero;
 }
 
-int Random::RandomIntRange(int nMax, int nMin) const
+int Random::GetRandomRange(int nMax, int nMin) const
 {
 	nMax++;
 	nMax -= nMin;
@@ -72,7 +71,7 @@ int Random::RandomIntRange(int nMax, int nMin) const
 	return rand() % nMax + nMin;
 }
 
-float Random::RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const
+float Random::GetRandom(int nMax, int nPointPos, bool bIncludeZero) const
 {
 	float fRandom;
 	int nSetPointPos;
@@ -101,7 +100,7 @@ float Random::RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const
 	return fRandom;
 }
 
-float Random::RandomFloatRange(int nMax, int nMin, int nPointPos) const
+float Random::GetRandomRange(int nMax, int nMin, int nPointPos) const
 {
 	float fRandom;
 	int nSetPointPos;
@@ -126,23 +125,20 @@ float Random::RandomFloatRange(int nMax, int nMin, int nPointPos) const
 	return fRandom;
 }
 
-void Random::RandomChoice(char* pszInput, ...) const
+std::string Random::Choice(std::string ssInput, ...) const
 {
 	int nRandom;
 	int nCount = 0;
-	int nPrint = 0;
 	int i;
-	int nLength = 0;
-	char* szInputElement;
-
-	szInputElement = new char[256];//”z—ñŠm•Û
+	std::string ssReturn;
 
 	va_list args, args2,args3;
-	va_start(args, pszInput);
+	va_start(args, ssInput);
 	va_copy(args2, args);
 	va_copy(args3, args);
 
 	//“ü—Í‚³‚ê‚½•¶š—ñ‚ÌƒJƒEƒ“ƒg
+	nCount++;//1‚Â–Ú‚Ìˆø”‚ÌƒJƒEƒ“ƒg
 	while (true)
 	{
 		if (va_arg(args, int) != NULL)
@@ -152,13 +148,13 @@ void Random::RandomChoice(char* pszInput, ...) const
 	}
 	va_end(args);
 
-	//“ü—Í‚³‚ê‚½•¶š”‚ª255•¶šˆÈ‰º‚©‚Ì”»’è
-	for (i = 0; i < nCount; i++)
+	//“ü—Í‚³‚ê‚½•¶š”‚ªstd::string‚ÌãŒÀ•¶šˆÈ‰º‚©‚Ì”»’è
+	for (i = 0; i < nCount - 1; i++)
 	{
-		if (strlen(va_arg(args2, const char*)) > 255)
+		if (va_arg(args2, std::string).size() > ssReturn.max_size() || ssInput.size() > ssReturn.max_size())
 		{
-			strcpy_s(pszInput, 6, "error");
-			return;
+			ssReturn = "error";
+			return ssReturn;
 		}
 	}
 	va_end(args2);
@@ -167,20 +163,17 @@ void Random::RandomChoice(char* pszInput, ...) const
 	nRandom = rand() % nCount + 1;
 
 	//•Ô‚·•¶š—ñ‚ğ‰¼Ši”[
-	for (i = 0; i < nRandom; i++)
+	if (nRandom == 1)
+		ssReturn = ssInput;
+	else
 	{
-		strcpy_s(szInputElement, 256, va_arg(args3, const char*));
+		for (i = 0; i < nRandom - 1; i++)
+		{
+			ssReturn = va_arg(args3, const char*);
+		}
 	}
-
-	szInputElement[255] = '\0';
-
 	va_end(args3);
 
-	//•¶š”•ª‚¾‚¯“n‚³‚ê‚½charŒ^”z—ñ‚ÉŠi”[
-	nLength = static_cast<int>(strlen(szInputElement)) + 1;
-	strncpy_s(pszInput, nLength, szInputElement, nLength);
-
-	delete[] szInputElement;//ƒƒ‚ƒŠŠJ•ú
+	return ssReturn;
 }
-
 }

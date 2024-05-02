@@ -8,12 +8,14 @@
  */
 #pragma once
 
+#include <string>
+
 namespace RYUU
 {
 class Random
 {
 private:
-	unsigned int nSeed;
+	unsigned int m_nSeed;
 
 public:
 
@@ -67,7 +69,7 @@ public:
 	 * @return 生成した乱数をint型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	int RandomInt(int nMax, bool bIncludeZero) const;
+	int GetRandom(int nMax, bool bIncludeZero) const;
 
 	/**
 	 * @fn
@@ -77,7 +79,7 @@ public:
 	 * @return 生成した乱数をint型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	int RandomIntRange(int nMax, int nMin) const;
+	int GetRandomRange(int nMax, int nMin) const;
 
 	/**
 	 * @fn
@@ -88,7 +90,7 @@ public:
 	 * @return 生成した乱数をfloat型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	float RandomFloat(int nMax, int nPointPos, bool bIncludeZero) const;
+	float GetRandom(int nMax, int nPointPos, bool bIncludeZero) const;
 
 	/**
 	 * @fn
@@ -99,7 +101,7 @@ public:
 	 * @return 生成した乱数をfloat型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	float RandomFloatRange(int nMax, int nMin, int nPointPos) const;
+	float GetRandomRange(int nMax, int nMin, int nPointPos) const;
 
 	/**
 	 * @fn
@@ -107,6 +109,7 @@ public:
 	 * @param [pszInput] 選ばれた文字列を受け取る為のchar型配列名※配列の大きさは255 + 1まで
 	 * @param [...] 複数の引数を指定可能、文字列を与えられることを想定している
 	 * @param 最後に必ずNULLを引数として渡す(例はプロトタイプ宣言のコメントを参照)
+	 * @return std::string型
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 *
 	 *			使用例：int main(void)
@@ -115,6 +118,6 @@ public:
 	 *						random_choice(szTest,"テスト1","テスト2","テスト3",NULL);
 	 *					}
 	 */
-	void RandomChoice(char* pszInput, ...) const;
+	std::string Choice(std::string ssInput,...) const;
 };
 }
