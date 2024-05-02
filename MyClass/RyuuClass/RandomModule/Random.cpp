@@ -44,7 +44,7 @@ unsigned int Random::GetSeed(void) const
 	return this->m_nSeed;
 }
 
-int Random::GetRandom(int nMax, bool bIncludeZero) const
+int Random::GetInteger(int nMax, bool bIncludeZero) const
 {
 	int nInZero;
 
@@ -62,7 +62,7 @@ int Random::GetRandom(int nMax, bool bIncludeZero) const
 	return rand() % nMax + nInZero;
 }
 
-int Random::GetRandomRange(int nMax, int nMin) const
+int Random::GetIntegerRange(int nMax, int nMin) const
 {
 	nMax++;
 	nMax -= nMin;
@@ -71,7 +71,7 @@ int Random::GetRandomRange(int nMax, int nMin) const
 	return rand() % nMax + nMin;
 }
 
-float Random::GetRandom(int nMax, int nPointPos, bool bIncludeZero) const
+float Random::GetDecimal(int nMax, int nPointPos, bool bIncludeZero) const
 {
 	float fRandom;
 	int nSetPointPos;
@@ -100,7 +100,7 @@ float Random::GetRandom(int nMax, int nPointPos, bool bIncludeZero) const
 	return fRandom;
 }
 
-float Random::GetRandomRange(int nMax, int nMin, int nPointPos) const
+float Random::GetDecimalRange(int nMax, int nMin, int nPointPos) const
 {
 	float fRandom;
 	int nSetPointPos;

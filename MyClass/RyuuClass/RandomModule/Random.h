@@ -69,7 +69,7 @@ public:
 	 * @return 生成した乱数をint型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	int GetRandom(int nMax, bool bIncludeZero) const;
+	int GetInteger(int nMax, bool bIncludeZero) const;
 
 	/**
 	 * @fn
@@ -79,7 +79,7 @@ public:
 	 * @return 生成した乱数をint型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	int GetRandomRange(int nMax, int nMin) const;
+	int GetIntegerRange(int nMax, int nMin) const;
 
 	/**
 	 * @fn
@@ -90,7 +90,7 @@ public:
 	 * @return 生成した乱数をfloat型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	float GetRandom(int nMax, int nPointPos, bool bIncludeZero) const;
+	float GetDecimal(int nMax, int nPointPos, bool bIncludeZero) const;
 
 	/**
 	 * @fn
@@ -101,7 +101,7 @@ public:
 	 * @return 生成した乱数をfloat型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	float GetRandomRange(int nMax, int nMin, int nPointPos) const;
+	float GetDecimalRange(int nMax, int nMin, int nPointPos) const;
 
 	/**
 	 * @fn
