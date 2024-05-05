@@ -125,14 +125,16 @@ float Random::GetDecimalRange(int nMax, int nMin, int nPointPos) const
 	return fRandom;
 }
 
-std::string Random::Choice(std::string ssInput, ...) const
+//‹ŒRandom.Choice‚ÌƒR[ƒh
+#if 0
+std::string Random::Choice(std::string ssInput,...) const
 {
 	int nRandom;
 	int nCount = 0;
 	int i;
 	std::string ssReturn;
 
-	va_list args, args2,args3;
+	va_list args, args2, args3;
 	va_start(args, ssInput);
 	va_copy(args2, args);
 	va_copy(args3, args);
@@ -176,4 +178,5 @@ std::string Random::Choice(std::string ssInput, ...) const
 
 	return ssReturn;
 }
+#endif
 }

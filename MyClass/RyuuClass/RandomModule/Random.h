@@ -9,6 +9,7 @@
 #pragma once
 
 #include <string>
+#include <initializer_list>
 
 namespace RYUU
 {
@@ -105,19 +106,56 @@ public:
 
 	/**
 	 * @fn
-	 * @brief 引数として与えた複数の文字列をランダムで1つchar型配列に格納
-	 * @param [pszInput] 選ばれた文字列を受け取る為のchar型配列名※配列の大きさは255 + 1まで
-	 * @param [...] 複数の引数を指定可能、文字列を与えられることを想定している
-	 * @param 最後に必ずNULLを引数として渡す(例はプロトタイプ宣言のコメントを参照)
+	 * @brief 引数として与えた複数の文字列をランダムで1つを返す
+	 * @param [...args] 複数の引数を指定可能、文字列を与えられることを想定している
 	 * @return std::string型
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
-	 *
-	 *			使用例：int main(void)
-	 *					{
-	 *						char szTest[255 + 1];
-	 *						random_choice(szTest,"テスト1","テスト2","テスト3",NULL);
-	 *					}
+	 * @memo 引数に文字列以外を渡すとエラーになる
 	 */
-	std::string Choice(std::string ssInput,...) const;
+	template<typename ...A>
+	std::string Choice(A... args) const;
 };
+
+//Random.Choiceの定義
+template<typename ...A>
+std::string Random::Choice(A... args) const
+{
+	int nRandom;
+	int nCount = 0;
+	int i;
+	std::string ssReturn;
+
+	//引数のカウント
+	for (std::string ss : std::initializer_list<std::string>{args... })
+	{
+		nCount++;
+	}
+
+	for (std::string ss : std::initializer_list<std::string>{args... })
+	{
+		if (ss.size() >= ss.max_size())
+		{
+			ssReturn = "error";
+			return ssReturn;
+		}
+	}
+
+	//返す文字列の番号決め
+	nRandom = rand() % nCount + 1;
+
+	i = 1;//カウンタ
+
+	for (std::string ss : std::initializer_list<std::string>{args...})
+	{
+		if (nRandom == i)
+		{
+			ssReturn = ss;
+			return ssReturn;
+		}
+		i++;
+	}
+
+	return ssReturn;
+}
+
 }
