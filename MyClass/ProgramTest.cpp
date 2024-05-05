@@ -93,7 +93,7 @@ void RandomTest(void)
 	Random Rand;
 
 	std::string ssTest;
-	ssTest = Rand.Choice("hoge","boke","hogehoge","bokeboke", NULL);
+	ssTest = Rand.Choice("hoge", "boke", "hogehoge", "bokeboke");
 	
 	std::cout << ssTest << std::endl;
 }
