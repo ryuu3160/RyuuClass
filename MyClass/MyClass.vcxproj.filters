@@ -36,11 +36,11 @@
     <ClCompile Include="RyuuClass\RandomModule\Random.cpp">
       <Filter>ソース ファイル\RandomModule</Filter>
     </ClCompile>
-    <ClCompile Include="RyuuClass\OutPutLog\OutPutLog.cpp">
-      <Filter>ソース ファイル\OutPutLog</Filter>
-    </ClCompile>
     <ClCompile Include="RyuuClass\PositionData\Pos.cpp">
       <Filter>ソース ファイル\PositionData</Filter>
+    </ClCompile>
+    <ClCompile Include="RyuuClass\OutPutLog\OutPutLog.cpp">
+      <Filter>ソース ファイル\OutPutLog</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

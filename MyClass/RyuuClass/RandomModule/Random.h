@@ -123,7 +123,7 @@ std::string Random::Choice(A... args) const
 	int nRandom;
 	int nCount = 0;
 	int i;
-	std::string ssReturn;
+	std::string strReturn;
 
 	//ˆø”‚ÌƒJƒEƒ“ƒg
 	for (std::string ss : std::initializer_list<std::string>{args... })
@@ -135,8 +135,8 @@ std::string Random::Choice(A... args) const
 	{
 		if (ss.size() >= ss.max_size())
 		{
-			ssReturn = "error";
-			return ssReturn;
+			strReturn = "error";
+			return strReturn;
 		}
 	}
 
@@ -149,13 +149,13 @@ std::string Random::Choice(A... args) const
 	{
 		if (nRandom == i)
 		{
-			ssReturn = ss;
-			return ssReturn;
+			strReturn = ss;
+			return strReturn;
 		}
 		i++;
 	}
 
-	return ssReturn;
+	return strReturn;
 }
 
 }
