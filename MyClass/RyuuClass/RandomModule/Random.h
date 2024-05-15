@@ -121,12 +121,12 @@ public:
 	 * @brief 引数で与えたvectorのデータからランダムに複数の要素を選択してvectorとして返す
 	 * @brief 要素の重複はない
 	 * @tparam T 渡すvectorの型名
-	 * @param aray vectorの変数名
+	 * @param &aray vectorの変数名
 	 * @param num 取得したい要素の個数
 	 * @return vectorクラス
 	 */
 	template<typename T>
-	std::vector<T> Sample(std::vector<T> aray, int num);
+	std::vector<T> Sample(const std::vector<T> &aray, int num);
 };
 
 //Random.Choiceの定義
@@ -173,7 +173,7 @@ std::string Random::Choice(A... args) const
 
 //Random.Sampleの定義
 template<typename T>
-std::vector<T> Random::Sample(std::vector<T> aray, int num)
+std::vector<T> Random::Sample(const std::vector<T> &aray, int num)
 {
 	std::vector<T> sample;
 	std::vector<int> Already;
