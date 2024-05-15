@@ -17,14 +17,14 @@ void PosTest(void);
 int main(void)
 {
 	//----- SORT -----
-	SortTest();
-	std::cout << std::endl << std::endl;
+	//SortTest();
+	//std::cout << std::endl << std::endl;
 	//----- RANDOM -----
 	RandomTest();
 	std::cout << std::endl;
 	//----- POS -----
-	PosTest();
-	std::cout << std::endl;
+	//PosTest();
+	//std::cout << std::endl;
 
 	rewind(stdin);
 	static_cast<void>(getchar());
@@ -92,10 +92,19 @@ void RandomTest(void)
 	using namespace RYUU;
 	Random Rand;
 
-	std::string ssTest;
-	ssTest = Rand.Choice("hoge", "boke", "hogehoge", "bokeboke");
+	std::vector<std::string> val,val2;
+	val.push_back("a");
+	val.push_back("b");
+	val.push_back("c");
+	val.push_back("d");
+
+	val2 = Rand.Sample(val, 3);
+
+	/*std::string ssTest;
+	ssTest = Rand.Choice("hoge", "boke", "hogehoge", "bokeboke");*/
 	
-	std::cout << ssTest << std::endl;
+	for(std::string i:val2)
+		std::cout << i << std::endl;
 }
 
 void PosTest(void)

@@ -9,7 +9,9 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include <initializer_list>
+#include "../OutPutLog/OutPutLog.h"
 
 namespace RYUU
 {
@@ -114,6 +116,17 @@ public:
 	 */
 	template<typename ...A>
 	std::string Choice(A... args) const;
+
+	/**
+	 * @brief 引数で与えたvectorのデータからランダムに複数の要素を選択してvectorとして返す
+	 * @brief 要素の重複はない
+	 * @tparam T 渡すvectorの型名
+	 * @param aray vectorの変数名
+	 * @param num 取得したい要素の個数
+	 * @return vectorクラス
+	 */
+	template<typename T>
+	std::vector<T> Sample(std::vector<T> aray, int num);
 };
 
 //Random.Choiceの定義
@@ -156,6 +169,56 @@ std::string Random::Choice(A... args) const
 	}
 
 	return strReturn;
+}
+
+//Random.Sampleの定義
+template<typename T>
+std::vector<T> Random::Sample(std::vector<T> aray, int num)
+{
+	std::vector<T> sample;
+	std::vector<int> Already;
+	int nRandom;	//プッシュするデータの要素番号
+	int nPushCount = 0;
+	bool bPush = true;
+
+	//要素数が配列のサイズよりも大きい場合のエラー
+	if (aray.size() < num)
+	{
+		Error("Too many elements to retrieve");
+		sample.clear();
+		return sample;
+	}
+
+	//プッシュ処理
+	while (nPushCount < num)
+	{
+		//乱数生成
+		nRandom = rand() % aray.size();
+
+		//重複排除
+		for (int i = 0; i < Already.size(); i++)
+		{
+			if (Already[i] == nRandom)
+			{
+				bPush = false;
+				break;
+			}
+			else
+			{
+				bPush = true;
+			}
+		}
+
+		//値の挿入
+		if (bPush)
+		{
+			sample.push_back(aray[nRandom]);
+			Already.push_back(nRandom);
+			nPushCount++;
+		}
+	}
+
+	return sample;
 }
 
 }
