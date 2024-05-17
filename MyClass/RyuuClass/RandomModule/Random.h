@@ -119,6 +119,24 @@ public:
 	std::string Choice(A... args) const;
 
 	/**
+	 * @brief 複数のデータが格納されたvectorからランダムで1つを返す
+	 * @tparam T vectorの型名
+	 * @param aray vectorの変数名
+	 * @return vectorの型と同じ型
+	 */
+	template<typename T>
+	T Choice(const std::vector<T>& aray) const;
+
+	/**
+	 * @brief 複数のデータが格納されたvectorからランダムで1つを返す
+	 * @tparam T vectorの型名
+	 * @param aray vectorの変数名
+	 * @return vectorの型と同じ型
+	 */
+	template<typename T>
+	T Choice(const std::list<T>& aray) const;
+
+	/**
 	 * @brief 引数で与えたvectorのデータからランダムに複数の要素を選択してvectorとして返す
 	 * @brief 要素の重複はない
 	 * @tparam T 渡すvectorの型名
@@ -180,6 +198,55 @@ std::string Random::Choice(A... args) const
 	}
 
 	return strReturn;
+}
+
+//Random.Choiceの定義(vector)
+template<typename T>
+T Random::Choice(const std::vector<T>& aray) const
+{
+	T put;
+	int nRandom;
+	int nCount = 0;
+
+	//要素がない場合のエラー
+	if (aray.empty())
+	{
+		put = -1;
+	}
+
+	//返す文字列の番号決め
+	nRandom = rand() % aray.size();
+
+	put = aray[nRandom];
+
+	return put;
+}
+
+//Random.Choiceの定義(list)
+template<typename T>
+T Random::Choice(const std::list<T>& aray) const
+{
+	T put;
+	int nRandom;
+	int nCount = 0;
+	auto itr = aray.begin();
+
+	//要素がない場合のエラー
+	if (aray.empty())
+	{
+		put = -1;
+	}
+
+	//返す文字列の番号決め
+	nRandom = rand() % aray.size();
+
+	for (int i = 0; i < nRandom; i++)
+	{
+		itr++;
+	}
+	put = *itr;
+
+	return put;
 }
 
 //Random.Sampleの定義(vector)
