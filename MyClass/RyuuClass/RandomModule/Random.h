@@ -127,7 +127,7 @@ public:
 	 * @return vectorクラス
 	 */
 	template<typename T>
-	std::vector<T> Sample(const std::vector<T> &aray, int num);
+	std::vector<T> Sample(const std::vector<T> &aray, int num) const;
 
 	/**
 	 * @brief 引数で与えたlistのデータからランダムに複数の要素を選択してlistとして返す
@@ -137,7 +137,7 @@ public:
 	 * @return listクラス
 	 */
 	template<typename T>
-	std::list<T> Sample(const std::list<T>& aray, int num);
+	std::list<T> Sample(const std::list<T>& aray, int num) const;
 };
 
 //Random.Choiceの定義
@@ -184,7 +184,7 @@ std::string Random::Choice(A... args) const
 
 //Random.Sampleの定義(vector)
 template<typename T>
-std::vector<T> Random::Sample(const std::vector<T> &aray, int num)
+std::vector<T> Random::Sample(const std::vector<T> &aray, int num) const
 {
 	std::vector<T> sample;
 	std::vector<int> Already;
@@ -234,7 +234,7 @@ std::vector<T> Random::Sample(const std::vector<T> &aray, int num)
 
 //Random.Sampleの定義(list)
 template<typename T>
-std::list<T> Random::Sample(const std::list<T>& aray, int num)
+std::list<T> Random::Sample(const std::list<T>& aray, int num) const
 {
 	std::list<T> sample;
 	std::vector<int> Already;
