@@ -10,6 +10,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include <initializer_list>
 #include "../OutPutLog/OutPutLog.h"
 
@@ -127,6 +128,16 @@ public:
 	 */
 	template<typename T>
 	std::vector<T> Sample(const std::vector<T> &aray, int num);
+
+	/**
+	 * @brief 引数で与えたlistのデータからランダムに複数の要素を選択してlistとして返す
+	 * @tparam T 渡すlistの型名
+	 * @param &aray listの変数名
+	 * @param num 取得したい要素の個数
+	 * @return listクラス
+	 */
+	template<typename T>
+	std::list<T> Sample(const std::list<T>& aray, int num);
 };
 
 //Random.Choiceの定義
@@ -171,7 +182,7 @@ std::string Random::Choice(A... args) const
 	return strReturn;
 }
 
-//Random.Sampleの定義
+//Random.Sampleの定義(vector)
 template<typename T>
 std::vector<T> Random::Sample(const std::vector<T> &aray, int num)
 {
@@ -213,6 +224,61 @@ std::vector<T> Random::Sample(const std::vector<T> &aray, int num)
 		if (bPush)
 		{
 			sample.push_back(aray[nRandom]);
+			Already.push_back(nRandom);
+			nPushCount++;
+		}
+	}
+
+	return sample;
+}
+
+//Random.Sampleの定義(list)
+template<typename T>
+std::list<T> Random::Sample(const std::list<T>& aray, int num)
+{
+	std::list<T> sample;
+	std::vector<int> Already;
+	int nRandom;	//プッシュするデータの要素番号
+	int nPushCount = 0;
+	bool bPush = true;
+
+	//要素数が配列のサイズよりも大きい場合のエラー
+	if (aray.size() < num)
+	{
+		Error("Too many elements to retrieve");
+		sample.clear();
+		return sample;
+	}
+
+	//プッシュ処理
+	while (nPushCount < num)
+	{
+		//乱数生成
+		nRandom = rand() % aray.size();
+
+		//重複排除
+		for (int i = 0; i < Already.size(); i++)
+		{
+			if (Already[i] == nRandom)
+			{
+				bPush = false;
+				break;
+			}
+			else
+			{
+				bPush = true;
+			}
+		}
+
+		//値の挿入
+		if (bPush)
+		{
+			auto itr = aray.begin();
+			for (int i = 0; i < nRandom; i++)
+			{
+				itr++;
+			}
+			sample.push_back(*itr);
 			Already.push_back(nRandom);
 			nPushCount++;
 		}

@@ -92,7 +92,7 @@ void RandomTest(void)
 	using namespace RYUU;
 	Random Rand;
 
-	std::vector<std::string> val,val2;
+	std::list<std::string> val,val2;
 	val.push_back("a");
 	val.push_back("b");
 	val.push_back("c");
