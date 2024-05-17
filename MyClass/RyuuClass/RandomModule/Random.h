@@ -143,19 +143,46 @@ public:
 	 * @param &aray vectorの変数名
 	 * @param num 取得したい要素の個数
 	 * @return vectorクラス
+	 * @memo 取得する要素数は元のvectorの要素数より大きくすることは出来ない
 	 */
 	template<typename T>
 	std::vector<T> Sample(const std::vector<T> &aray, int num) const;
 
 	/**
 	 * @brief 引数で与えたlistのデータからランダムに複数の要素を選択してlistとして返す
+	 * @brief 要素の重複はない
 	 * @tparam T 渡すlistの型名
 	 * @param &aray listの変数名
 	 * @param num 取得したい要素の個数
 	 * @return listクラス
+	 * @memo 取得する要素数は元のvectorの要素数より大きくすることは出来ない
 	 */
 	template<typename T>
 	std::list<T> Sample(const std::list<T>& aray, int num) const;
+
+	/**
+	 * @brief 引数で与えたvectorのデータからランダムに複数の要素を選択してvectorとして返す
+	 * @brief 要素の重複あり
+	 * @tparam T 渡すvectorの型名
+	 * @param &aray vectorの変数名
+	 * @param k 取得する要素数
+	 * @return vectorクラス
+	 * @memo 取得する要素数は元のvectorの要素数より大きくすることが出来る
+	 */
+	template<typename T>
+	std::vector<T> Choices(const std::vector<T>& aray, int k) const;
+
+	/**
+	 * @brief 引数で与えたlistのデータからランダムに複数の要素を選択してlistとして返す
+	 * @brief 要素の重複あり
+	 * @tparam T 渡すlistの型名
+	 * @param &aray listの変数名
+	 * @param k 取得する要素数
+	 * @return listクラス
+	 * @memo 取得する要素数は元のvectorの要素数より大きくすることが出来る
+	 */
+	template<typename T>
+	std::list<T> Choices(const std::list<T>& aray, int k) const;
 };
 
 //Random.Choiceの定義
@@ -349,6 +376,51 @@ std::list<T> Random::Sample(const std::list<T>& aray, int num) const
 			Already.push_back(nRandom);
 			nPushCount++;
 		}
+	}
+
+	return sample;
+}
+
+//Random.Choicesの定義(vector)
+template<typename T>
+std::vector<T> Random::Choices(const std::vector<T>& aray, int k) const
+{
+	std::vector<T> choices;
+	int nRandom;	//プッシュするデータの要素番号
+
+	//プッシュ処理
+	for (int i = 0;i < k;i++)
+	{
+		//乱数生成
+		nRandom = rand() % aray.size();
+		//プッシュ
+		sample.push_back(aray[nRandom]);
+	}
+
+	return sample;
+}
+
+//Random.Choicesの定義(list)
+template<typename T>
+std::list<T> Random::Choices(const std::list<T>& aray, int k) const
+{
+	std::list<T> choices;
+	int nRandom;	//プッシュするデータの要素番号
+
+	//プッシュ処理
+	for (int i = 0; i < k; i++)
+	{
+		//先頭イテレーター取得
+		auto itr = aray.begin();
+		//乱数生成
+		nRandom = rand() % aray.size();
+
+		for (int j = 0; j < nRandom; j++)
+		{
+			itr++;
+		}
+		//プッシュ
+		sample.push_back(*itr);
 	}
 
 	return sample;
