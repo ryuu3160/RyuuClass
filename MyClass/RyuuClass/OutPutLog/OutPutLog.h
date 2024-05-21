@@ -18,6 +18,14 @@ namespace RYUU
 /// @memo ボタンはOKのみ
 void Error(LPCSTR msg);
 
+/**
+ * @brief エラーのメッセージボックスを表示する
+ * @param hWnd 親ウィンドウへのハンドル
+ * @param msg エラーメッセージ
+ * @memo ボタンはOKのみ
+ */
+void Error(HWND hWnd, LPCSTR msg);
+
 /// @brief デバッグをコンソールに表示する
 /// @param [DebugMsg] 表示する文字列へのポインタ
 void OutputDebug(std::string DebugMsg);

@@ -11,6 +11,11 @@ void Error(LPCSTR msg)
 	MessageBox(NULL, msg, "Error", MB_OK | MB_ICONERROR);
 }
 
+void Error(HWND hWnd, LPCSTR msg)
+{
+	MessageBox(hWnd, msg, "Error", MB_OK | MB_ICONERROR);
+}
+
 void OutputDebug(std::string DebugMsg)
 {
 	OutputDebugString(DebugMsg.c_str());
