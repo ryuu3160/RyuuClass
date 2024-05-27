@@ -95,6 +95,7 @@ void Sort::IntegerSort(int* Array,int size,SORT_MODE mode) const
 	}
 
 	delete[] TmpArray;//ƒƒ‚ƒŠ‰ğ•ú
+	TmpArray = nullptr;
 }
 
 void Sort::SetStrArrayData(int nSize, int nWidth)
@@ -186,13 +187,13 @@ void Sort::StringSort(char* Array, SORT_MODE mode) const
 	for (i = 0; i < nLine; i++)
 	{
 		delete[] szTmpArray[i];
-		szTmpArray[i] = NULL;//ƒkƒ‹ƒ|
+		szTmpArray[i] = nullptr;//ƒkƒ‹ƒ|
 	}
 	delete[] szTmpArray;
-	szTmpArray = NULL;//ƒkƒ‹ƒ|
+	szTmpArray = nullptr;//ƒkƒ‹ƒ|
 	delete[] szTmp;
-	szTmp = NULL;//ƒkƒ‹ƒ|
-	szpKeep = NULL;//ƒkƒ‹ƒ|
+	szTmp = nullptr;//ƒkƒ‹ƒ|
+	szpKeep = nullptr;//ƒkƒ‹ƒ|
 }
 
 }
