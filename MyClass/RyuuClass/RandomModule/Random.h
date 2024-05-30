@@ -394,10 +394,10 @@ std::vector<T> Random::Choices(const std::vector<T>& aray, int k) const
 		//乱数生成
 		nRandom = rand() % aray.size();
 		//プッシュ
-		sample.push_back(aray[nRandom]);
+		choices.push_back(aray[nRandom]);
 	}
 
-	return sample;
+	return choices;
 }
 
 //Random.Choicesの定義(list)
@@ -420,10 +420,10 @@ std::list<T> Random::Choices(const std::list<T>& aray, int k) const
 			itr++;
 		}
 		//プッシュ
-		sample.push_back(*itr);
+		choices.push_back(*itr);
 	}
 
-	return sample;
+	return choices;
 }
 
 }
