@@ -137,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RyuuClass.h" />
+    <ClInclude Include="RyuuClass\AssetsLoader\AssetsLoader.h" />
     <ClInclude Include="RyuuClass\OutPutLog\OutPutLog.h" />
     <ClInclude Include="RyuuClass\PositionData\Pos.h" />
     <ClInclude Include="RyuuClass\RandomModule\Random.h" />

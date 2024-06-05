@@ -25,6 +25,9 @@
     <Filter Include="ソース ファイル\PositionData">
       <UniqueIdentifier>{be469be4-af42-4d0c-bc63-bf4520c439a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\AssetsLoader">
+      <UniqueIdentifier>{fe9394f6-0c3b-4271-b5c9-7b7f2212ee30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ProgramTest.cpp">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="RyuuClass\PositionData\Pos.h">
       <Filter>ソース ファイル\PositionData</Filter>
+    </ClInclude>
+    <ClInclude Include="RyuuClass\AssetsLoader\AssetsLoader.h">
+      <Filter>ソース ファイル\AssetsLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

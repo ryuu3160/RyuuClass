@@ -14,3 +14,4 @@
 #include "RyuuClass/RandomModule/Random.h"
 #include "RyuuClass/OutPutLog/OutPutLog.h"
 #include "RyuuClass/PositionData/Pos.h"
+#include "RyuuClass/AssetsLoader/AssetsLoader.h"
