@@ -12,15 +12,13 @@
 #include <vector>
 #include <list>
 #include <initializer_list>
+#include <random>
 #include "../OutPutLog/OutPutLog.h"
 
 namespace RYUU
 {
 class Random
 {
-private:
-	unsigned int m_nSeed;
-
 public:
 
 	/**
@@ -39,6 +37,18 @@ public:
 	Random(unsigned int nSeed);
 
 	~Random();//デストラクタ
+
+	/**
+	 * @brief メルセンヌ・ツイスタ―の有効化
+	 * @param  無し
+	 */
+	void enableMT(void);
+
+	/**
+	 * @brief メルセンヌ・ツイスタ―の無効化
+	 * @param  無し
+	 */
+	void disableMT(void);
 
 	/**
 	 * @fn
@@ -183,7 +193,17 @@ public:
 	 */
 	template<typename T>
 	std::list<T> Choices(const std::list<T>& aray, int k) const;
+
+	private:
+		unsigned int m_nSeed;
+		bool m_bMT;//メルセンヌツイスターを使用するか
+		std::random_device* m_rd;//非決定的な乱数生成
+		std::mt19937* m_mt;//メルセンヌツイスター
+		std::uniform_int_distribution<int>* m_dist;//一様分布生成器
 };
+
+
+
 
 //Random.Choiceの定義
 template<typename ...A>

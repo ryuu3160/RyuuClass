@@ -27,6 +27,16 @@ Random::~Random(void)
 	
 }
 
+void Random::enableMT(void)
+{
+	m_bMT = true;
+}
+
+void Random::disableMT(void)
+{
+	m_bMT = false;
+}
+
 void Random::SetSeedTime(void)
 {
 	this->m_nSeed = static_cast<unsigned int>(time(NULL));
