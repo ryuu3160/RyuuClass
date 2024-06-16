@@ -91,6 +91,7 @@ void RandomTest(void)
 {
 	using namespace RYUU;
 	Random Rand;
+	Rand.enableMT();
 
 	std::string str;
 	std::list<std::string> val,val2;

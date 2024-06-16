@@ -10,13 +10,13 @@
 namespace RYUU
 {
 
-Random::Random(void)
+Random::Random(void) : m_bMT(false), m_rd(nullptr), m_mt(nullptr), m_dist(nullptr)
 {
 	this->m_nSeed = static_cast<unsigned int>(time(NULL));
 	srand(this->m_nSeed);
 }
 
-Random::Random(unsigned int nSeed)
+Random::Random(unsigned int nSeed) : m_bMT(false), m_rd(nullptr), m_mt(nullptr), m_dist(nullptr)
 {
 	this->m_nSeed = nSeed;
 	srand(this->m_nSeed);
@@ -24,17 +24,32 @@ Random::Random(unsigned int nSeed)
 
 Random::~Random(void)
 {
-	
+	if (m_rd != nullptr)
+		delete m_rd;
+	if (m_mt != nullptr)
+		delete m_mt;
+	if (m_dist != nullptr)
+		delete m_dist;
 }
 
 void Random::enableMT(void)
 {
 	m_bMT = true;
+	m_rd = new std::random_device();
+	m_mt = new std::mt19937((*m_rd)());
+	m_dist = new std::uniform_int_distribution<>(0, RAND_MAX);
 }
 
 void Random::disableMT(void)
 {
 	m_bMT = false;
+	delete m_dist;
+	delete m_mt;
+	delete m_rd;
+
+	m_dist = nullptr;
+	m_mt = nullptr;
+	m_rd = nullptr;
 }
 
 void Random::SetSeedTime(void)
@@ -69,7 +84,14 @@ int Random::GetInteger(int nMax, bool bIncludeZero) const
 	}
 
 	//乱数を最大値で割った余りにnInZeroを足す
-	return rand() % nMax + nInZero;
+	if (m_bMT)
+	{
+		return (*m_dist)(*m_mt) % nMax + nInZero;
+	}
+	else
+	{
+		return rand() % nMax + nInZero;
+	}
 }
 
 int Random::GetIntegerRange(int nMax, int nMin) const
@@ -78,7 +100,14 @@ int Random::GetIntegerRange(int nMax, int nMin) const
 	nMax -= nMin;
 
 	//最大値を+1したものから最小値を引き、それで乱数を割った余りに最小値を足す
-	return rand() % nMax + nMin;
+	if (m_bMT)
+	{
+		return (*m_dist)(*m_mt) % nMax + nMin;
+	}
+	else
+	{
+		return rand() % nMax + nMin;
+	}
 }
 
 float Random::GetDecimal(int nMax, int nPointPos, bool bIncludeZero) const
@@ -104,8 +133,15 @@ float Random::GetDecimal(int nMax, int nPointPos, bool bIncludeZero) const
 	}
 
 	//乱数を最大値で割った余りにnInZeroを足して、小数点をずらす
-	fRandom = static_cast<float>(rand() % nVal + nInZero);
-	fRandom /= nSetPointPos;
+	if (m_bMT)
+	{
+		fRandom = static_cast<float>((*m_dist)(*m_mt) % nVal + nInZero);
+		fRandom /= nSetPointPos;
+	}
+	{
+		fRandom = static_cast<float>(rand() % nVal + nInZero);
+		fRandom /= nSetPointPos;
+	}
 
 	return fRandom;
 }
@@ -129,15 +165,23 @@ float Random::GetDecimalRange(int nMax, int nMin, int nPointPos) const
 	nMaxVal -= nMinVal;
 
 	//乱数を最大値から最小値を引いた値で割った余りに最小値を足して、小数点の位置をずらす
-	fRandom = static_cast<float>(rand() % nMaxVal + nMinVal);
-	fRandom /= nSetPointPos;
+	if (m_bMT)
+	{
+		fRandom = static_cast<float>((*m_dist)(*m_mt) % nMaxVal + nMinVal);
+		fRandom /= nSetPointPos;
+	}
+	else
+	{
+		fRandom = static_cast<float>(rand() % nMaxVal + nMinVal);
+		fRandom /= nSetPointPos;
+	}
 
 	return fRandom;
 }
 
 //旧Random.Choiceのコード
 #if 0
-std::string Random::Choice(std::string ssInput,...) const
+std::string Random::Choice(std::string ssInput, ...) const
 {
 	int nRandom;
 	int nCount = 0;

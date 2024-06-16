@@ -230,7 +230,14 @@ std::string Random::Choice(A... args) const
 	}
 
 	//返す文字列の番号決め
-	nRandom = rand() % nCount + 1;
+	if (m_bMT)
+	{
+		nRandom = (*m_dist)(*m_mt) % nCount + 1;
+	}
+	else
+	{
+		nRandom = rand() % nCount + 1;
+	}
 
 	i = 1;//カウンタ
 
@@ -262,7 +269,14 @@ T Random::Choice(const std::vector<T>& aray) const
 	}
 
 	//返す文字列の番号決め
-	nRandom = rand() % aray.size();
+	if (m_bMT)
+	{
+		nRandom = (*m_dist)(*m_mt) % aray.size();
+	}
+	else
+	{
+		nRandom = rand() % aray.size();
+	}
 
 	put = aray[nRandom];
 
@@ -285,7 +299,14 @@ T Random::Choice(const std::list<T>& aray) const
 	}
 
 	//返す文字列の番号決め
-	nRandom = rand() % aray.size();
+	if (m_bMT)
+	{
+		nRandom = (*m_dist)(*m_mt) % aray.size();
+	}
+	else
+	{
+		nRandom = rand() % aray.size();
+	}
 
 	for (int i = 0; i < nRandom; i++)
 	{
@@ -318,7 +339,14 @@ std::vector<T> Random::Sample(const std::vector<T> &aray, int num) const
 	while (nPushCount < num)
 	{
 		//乱数生成
-		nRandom = rand() % aray.size();
+		if (m_bMT)
+		{
+			nRandom = (*m_dist)(*m_mt) % aray.size();
+		}
+		else
+		{
+			nRandom = rand() % aray.size();
+		}
 
 		//重複排除
 		for (int i = 0; i < Already.size(); i++)
@@ -368,7 +396,14 @@ std::list<T> Random::Sample(const std::list<T>& aray, int num) const
 	while (nPushCount < num)
 	{
 		//乱数生成
-		nRandom = rand() % aray.size();
+		if (m_bMT)
+		{
+			nRandom = (*m_dist)(*m_mt) % aray.size();
+		}
+		else
+		{
+			nRandom = rand() % aray.size();
+		}
 
 		//重複排除
 		for (int i = 0; i < Already.size(); i++)
@@ -412,7 +447,14 @@ std::vector<T> Random::Choices(const std::vector<T>& aray, int k) const
 	for (int i = 0;i < k;i++)
 	{
 		//乱数生成
-		nRandom = rand() % aray.size();
+		if (m_bMT)
+		{
+			nRandom = (*m_dist)(*m_mt) % aray.size();
+		}
+		else
+		{
+			nRandom = rand() % aray.size();
+		}
 		//プッシュ
 		choices.push_back(aray[nRandom]);
 	}
@@ -433,7 +475,14 @@ std::list<T> Random::Choices(const std::list<T>& aray, int k) const
 		//先頭イテレーター取得
 		auto itr = aray.begin();
 		//乱数生成
-		nRandom = rand() % aray.size();
+		if (m_bMT)
+		{
+			nRandom = (*m_dist)(*m_mt) % aray.size();
+		}
+		else
+		{
+			nRandom = rand() % aray.size();
+		}
 
 		for (int j = 0; j < nRandom; j++)
 		{
@@ -442,7 +491,6 @@ std::list<T> Random::Choices(const std::list<T>& aray, int k) const
 		//プッシュ
 		choices.push_back(*itr);
 	}
-
 	return choices;
 }
 
