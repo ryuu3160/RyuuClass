@@ -95,13 +95,9 @@ void RandomTest(void)
 
 	while (1)
 	{
-		std::cout << Rand.GetInteger(100, true) << std::endl;
-		std::cout << Rand.GetIntegerRange(100, -50) << std::endl;
+		std::cout << Rand.GetDecimalRange(0.5, -0.5, 3) << std::endl;
 		std::cout << std::endl;
-		std::cout << Rand.GetDecimal(100, 3, true) << std::endl;
-		std::cout << Rand.GetDecimalRange(100, -50, 3) << std::endl;
-		std::cout << std::endl;
-		Sleep(1000);
+		Sleep(300);
 	}
 
 	//std::string str;

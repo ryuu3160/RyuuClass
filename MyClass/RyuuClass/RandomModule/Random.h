@@ -115,7 +115,7 @@ public:
 	 * @return 生成した乱数をfloat型で返す
 	 * @detail シード値は必ず設定されているので、この関数が失敗することは無い
 	 */
-	float GetDecimalRange(int nMax, int nMin, int nPointPos) const;
+	float GetDecimalRange(float fMax, float fMin, int fPointPos) const;
 
 	/**
 	 * @fn
