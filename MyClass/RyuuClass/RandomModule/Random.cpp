@@ -37,7 +37,7 @@ void Random::enableMT(void)
 	m_bMT = true;
 	m_rd = new std::random_device();
 	m_mt = new std::mt19937((*m_rd)());
-	m_dist = new std::uniform_int_distribution<>(0, RAND_MAX);
+	m_dist = new std::uniform_real_distribution<float>(0, RAND_MAX);
 }
 
 void Random::disableMT(void)
@@ -86,7 +86,7 @@ int Random::GetInteger(int nMax, bool bIncludeZero) const
 	//乱数を最大値で割った余りにnInZeroを足す
 	if (m_bMT)
 	{
-		return (*m_dist)(*m_mt) % nMax + nInZero;
+		return static_cast<int>((*m_dist)(*m_mt)) % nMax + nInZero;
 	}
 	else
 	{
@@ -102,7 +102,7 @@ int Random::GetIntegerRange(int nMax, int nMin) const
 	//最大値を+1したものから最小値を引き、それで乱数を割った余りに最小値を足す
 	if (m_bMT)
 	{
-		return (*m_dist)(*m_mt) % nMax + nMin;
+		return static_cast<int>((*m_dist)(*m_mt)) % nMax + nMin;
 	}
 	else
 	{
@@ -135,7 +135,7 @@ float Random::GetDecimal(int nMax, int nPointPos, bool bIncludeZero) const
 	//乱数を最大値で割った余りにnInZeroを足して、小数点をずらす
 	if (m_bMT)
 	{
-		fRandom = static_cast<float>((*m_dist)(*m_mt) % nVal + nInZero);
+		fRandom = static_cast<float>(static_cast<int>((*m_dist)(*m_mt)) % nVal + nInZero);
 		fRandom /= nSetPointPos;
 	}
 	{
@@ -152,10 +152,11 @@ float Random::GetDecimalRange(int nMax, int nMin, int nPointPos) const
 	int nSetPointPos;
 	int nMaxVal;
 	int nMinVal;
+	auto param = m_dist->param(); // 現在の乱数の最大値を保存
 
 	//10を、表示したい少数の位だけ累乗した数値
 	nSetPointPos = static_cast<int>(pow(10, nPointPos));
-
+	
 	//最大値、最小値の桁を増やす
 	nMaxVal = nMax * nSetPointPos;
 	nMinVal = nMin * nSetPointPos;
@@ -164,11 +165,18 @@ float Random::GetDecimalRange(int nMax, int nMin, int nPointPos) const
 	nMaxVal++;
 	nMaxVal -= nMinVal;
 
+	// 生成できる乱数の最大値を変更
+	std::uniform_real_distribution<float>::param_type SetParam(0, static_cast<float>(nMaxVal));
+	m_dist->param(SetParam);
+
 	//乱数を最大値から最小値を引いた値で割った余りに最小値を足して、小数点の位置をずらす
 	if (m_bMT)
 	{
-		fRandom = static_cast<float>((*m_dist)(*m_mt) % nMaxVal + nMinVal);
+		fRandom = static_cast<float>(static_cast<int>((*m_dist)(*m_mt)) % nMaxVal + nMinVal);
 		fRandom /= nSetPointPos;
+
+		// 生成できる乱数の最大値を元に戻す
+		m_dist->param(param);
 	}
 	else
 	{

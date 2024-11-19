@@ -199,7 +199,7 @@ public:
 		bool m_bMT;//メルセンヌツイスターを使用するか
 		std::random_device* m_rd;//非決定的な乱数生成
 		std::mt19937* m_mt;//メルセンヌツイスター
-		std::uniform_int_distribution<int>* m_dist;//一様分布生成器
+		std::uniform_real_distribution<float>* m_dist;//一様分布生成器
 };
 
 
@@ -232,7 +232,7 @@ std::string Random::Choice(A... args) const
 	//返す文字列の番号決め
 	if (m_bMT)
 	{
-		nRandom = (*m_dist)(*m_mt) % nCount + 1;
+		nRandom = static_cast<int>((*m_dist)(*m_mt)) % nCount + 1;
 	}
 	else
 	{
