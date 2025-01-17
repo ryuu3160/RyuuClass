@@ -271,7 +271,7 @@ T Random::Choice(const std::vector<T>& aray) const
 	//•Ô‚·•¶š—ñ‚Ì”Ô†Œˆ‚ß
 	if (m_bMT)
 	{
-		nRandom = (*m_dist)(*m_mt) % aray.size();
+		nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 	}
 	else
 	{
@@ -301,7 +301,7 @@ T Random::Choice(const std::list<T>& aray) const
 	//•Ô‚·•¶š—ñ‚Ì”Ô†Œˆ‚ß
 	if (m_bMT)
 	{
-		nRandom = (*m_dist)(*m_mt) % aray.size();
+		nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 	}
 	else
 	{
@@ -341,7 +341,7 @@ std::vector<T> Random::Sample(const std::vector<T> &aray, int num) const
 		//—”¶¬
 		if (m_bMT)
 		{
-			nRandom = (*m_dist)(*m_mt) % aray.size();
+			nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 		}
 		else
 		{
@@ -398,7 +398,7 @@ std::list<T> Random::Sample(const std::list<T>& aray, int num) const
 		//—”¶¬
 		if (m_bMT)
 		{
-			nRandom = (*m_dist)(*m_mt) % aray.size();
+			nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 		}
 		else
 		{
@@ -449,7 +449,7 @@ std::vector<T> Random::Choices(const std::vector<T>& aray, int k) const
 		//—”¶¬
 		if (m_bMT)
 		{
-			nRandom = (*m_dist)(*m_mt) % aray.size();
+			nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 		}
 		else
 		{
@@ -477,7 +477,7 @@ std::list<T> Random::Choices(const std::list<T>& aray, int k) const
 		//—”¶¬
 		if (m_bMT)
 		{
-			nRandom = (*m_dist)(*m_mt) % aray.size();
+			nRandom = static_cast<int>((*m_dist)(*m_mt)) % aray.size();
 		}
 		else
 		{
