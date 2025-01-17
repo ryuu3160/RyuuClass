@@ -93,31 +93,18 @@ void RandomTest(void)
 	Random Rand;
 	Rand.enableMT();
 
-	while (1)
+	std::list<std::string> str;
+	str.push_back("ryuu");
+	str.push_back("O“‡");
+	str.push_back("Tsukishiro");
+	str.push_back("’íŒN");
+
+	str = Rand.Sample(str, 4);
+
+	for (auto itr = str.begin(); itr != str.end(); itr++)
 	{
-		std::cout << Rand.GetDecimalRange(0.5, -0.5, 3) << std::endl;
-		std::cout << std::endl;
-		Sleep(300);
+		printf("%s\n", itr->c_str());
 	}
-
-	//std::string str;
-	//std::list<std::string> val,val2;
-	//val.push_back("a");
-	//val.push_back("b");
-	//val.push_back("c");
-	//val.push_back("d");
-
-	//val2 = Rand.Sample(val, 3);
-
-	//str = Rand.Choice(val);
-
-	/*std::string ssTest;
-	ssTest = Rand.Choice("hoge", "boke", "hogehoge", "bokeboke");*/
-	
-	/*for(std::string i:val2)
-		std::cout << i << std::endl;*/
-
-	//std::cout << str << std::endl;
 }
 
 void PosTest(void)
