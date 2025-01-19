@@ -96,8 +96,9 @@ void RandomTest(void)
 	str.push_back("O“‡");
 	str.push_back("Tsukishiro");
 	str.push_back("’íŒN");
+	str.push_back("ƒMƒ‹");
 
-	str = Rand.Sample(str, 4);
+	str = Rand.Sample(str, 5);
 
 	for (auto itr = str.begin(); itr != str.end(); itr++)
 	{
