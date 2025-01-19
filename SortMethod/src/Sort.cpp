@@ -1,8 +1,8 @@
 /*+===================================================================
-	File: Sort.hpp
-	Summary: ソートプログラムのヘッダ
+	File: Sort.cpp
+	Summary: ソートプログラムの実装
 	Author: AT12C192 01 青木雄一郎
-	Date: 03/10/2024 初回作成
+	Date: 03/10.2024 初回作成
 			/10 関数の追加 [IntegerSort]
 			/11 関数の追加 [SetStrArrayData,StringSort]
 ===================================================================+*/
@@ -31,7 +31,7 @@ Sort::~Sort(void)
 
 }
 
-void Sort::IntegerSort(int* Array,int size,SORT_MODE mode) const
+void Sort::IntegerSort(int* Array,int size, Sort::SORT_MODE mode) const
 {
 	int i,j;	//添え字
 	int nTmp;	//データ一時保存場所
@@ -85,13 +85,13 @@ void Sort::IntegerSort(int* Array,int size,SORT_MODE mode) const
 	//ソート後の値を引数として渡された配列に格納
 	switch (mode)
 	{
-	case SORT_MODE::ASCENDING://昇順
+	case Sort::SORT_MODE::ASCENDING://昇順
 		for (i = 0; i < roop; i++)
 		{
 			Array[roop - i] = TmpArray[i];
 		}
 		break;
-	case SORT_MODE::DESCENDING://降順
+	case Sort::SORT_MODE::DESCENDING://降順
 		for (i = 0; i < roop; i++)
 		{
 			Array[i] = TmpArray[i];
@@ -109,7 +109,7 @@ void Sort::SetStrArrayData(int nSize, int nWidth)
 	this->nLine = nSize / nWidth;
 }
 
-void Sort::StringSort(char* Array, SORT_MODE mode) const
+void Sort::StringSort(char* Array, Sort::SORT_MODE mode) const
 {
 	int i,j;	//添え字
 	int nGap;	//ギャップ
@@ -174,13 +174,13 @@ void Sort::StringSort(char* Array, SORT_MODE mode) const
 
 	switch (mode)
 	{
-	case SORT_MODE::ASCENDING://昇順
+	case Sort::SORT_MODE::ASCENDING://昇順
 		for (i = 0; i < nLine; i++, Array += nWidth)
 		{
 			strcpy_s(Array, nWidth, szTmpArray[nLine - i - 1]);
 		}
 		break;
-	case SORT_MODE::DESCENDING://降順
+	case Sort::SORT_MODE::DESCENDING://降順
 		for (i = 0; i < nLine; i++, Array += nWidth)
 		{
 			strcpy_s(Array, nWidth, szTmpArray[i]);

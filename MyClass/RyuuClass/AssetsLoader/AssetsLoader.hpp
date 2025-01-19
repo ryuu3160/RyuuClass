@@ -1,15 +1,15 @@
-/**
-* @file AssetsLoader.h
- * @brief AssetsLoader class header file
- * @author Ryuu
- * @date 2021/02/14
- */
+/*+===================================================================
+	File: AssetsLoader.hpp
+	Summary: AssetsLoader class header file
+	Author: AT12C192 01 青木雄一郎
+	Date: 03/10.2024 初回作成
+			/10 関数の追加 [IntegerSort]
+			/11 関数の追加 [SetStrArrayData,StringSort]
+===================================================================+*/
 #pragma once
 #include <map>
 #include <string>
 
-namespace RYUU
-{
 template<typename T>
 class AssetsLoader
 {
@@ -34,22 +34,21 @@ public:
 private:
 	std::map<std::string, T> m_assets;
 };
-}
 
 template<typename T>
-RYUU::AssetsLoader<T>::AssetsLoader()
+AssetsLoader<T>::AssetsLoader()
 {
 	m_assets.clear();
 }
 
 template<typename T>
-RYUU::AssetsLoader<T>::~AssetsLoader()
+AssetsLoader<T>::~AssetsLoader()
 {
 	m_assets.clear();
 }
 
 template<typename T>
-void RYUU::AssetsLoader<T>::Set(T path, std::string name)
+void AssetsLoader<T>::Set(T path, std::string name)
 {
 	//既に同じ名前のアセットが登録されていないか確認
 	if (m_assets.count(name) == 0)
@@ -59,7 +58,7 @@ void RYUU::AssetsLoader<T>::Set(T path, std::string name)
 }
 
 template<typename T>
-T RYUU::AssetsLoader<T>::Get(std::string FindName) const
+T AssetsLoader<T>::Get(std::string FindName) const
 {
 	return m_assets[FindName];
 }

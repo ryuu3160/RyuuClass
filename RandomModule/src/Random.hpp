@@ -1,11 +1,9 @@
-/*
- * @file Random.h
- * @brief ランダムモジュールプログラムのヘッダ
- * @author 青木雄一郎
- * @date 作成日：03/17.2024
- *
- * @date 03/10 関数の追加 [IntegerRandom]
- */
+ /*+===================================================================
+	 File: Random.hpp
+	 Summary: ランダムモジュールプログラムのヘッダ
+	 Author: AT12C192 01 青木雄一郎
+	 Date: 03/17.2024 初回作成
+ ===================================================================+*/
 #pragma once
 
 #include <string>
@@ -13,10 +11,8 @@
 #include <list>
 #include <initializer_list>
 #include <random>
-#include "../OutPutLog/OutPutLog.h"
+#include <debugapi.h>
 
-namespace RYUU
-{
 class Random
 {
 public:
@@ -330,7 +326,7 @@ std::vector<T> Random::Sample(const std::vector<T> &aray, int num) const
 	//要素数が配列のサイズよりも大きい場合のエラー
 	if (aray.size() < num)
 	{
-		Error("Too many elements to retrieve");
+		OutputDebugStringA("error : Too many elements to retrieve");
 		sample.clear();
 		return sample;
 	}
@@ -387,7 +383,7 @@ std::list<T> Random::Sample(const std::list<T>& aray, int num) const
 	//要素数が配列のサイズよりも大きい場合のエラー
 	if (aray.size() < num)
 	{
-		Error("Too many elements to retrieve");
+		OutputDebugStringA("error : Too many elements to retrieve");
 		sample.clear();
 		return sample;
 	}
@@ -492,6 +488,4 @@ std::list<T> Random::Choices(const std::list<T>& aray, int k) const
 		choices.push_back(*itr);
 	}
 	return choices;
-}
-
 }

@@ -1,8 +1,8 @@
 /*+===================================================================
-	File: Random.hpp
-	Summary: ランダムモジュールプログラムのヘッダ
-	Author: AT12C192 01 青木雄一郎
-	Date: 03/17/2024 初回作成
+	 File: Random.cpp
+	 Summary: ランダムモジュールプログラムの実装
+	 Author: AT12C192 01 青木雄一郎
+	 Date: 03/17.2024 初回作成
 ===================================================================+*/
 #include "Random.hpp"
 #include <stdio.h>
@@ -12,7 +12,7 @@
 #include <stdarg.h>
 #include <string>
 
-Random::Random() : m_bMT(false), m_rd(nullptr), m_mt(nullptr), m_dist(nullptr)
+Random::Random(void) : m_bMT(false), m_rd(nullptr), m_mt(nullptr), m_dist(nullptr)
 {
 	this->m_nSeed = static_cast<unsigned int>(time(NULL));
 	srand(this->m_nSeed);
@@ -24,7 +24,7 @@ Random::Random(unsigned int nSeed) : m_bMT(false), m_rd(nullptr), m_mt(nullptr),
 	srand(this->m_nSeed);
 }
 
-Random::~Random()
+Random::~Random(void)
 {
 	if (m_rd != nullptr)
 		delete m_rd;
@@ -34,7 +34,7 @@ Random::~Random()
 		delete m_dist;
 }
 
-void Random::enableMT()
+void Random::enableMT(void)
 {
 	m_bMT = true;
 	m_rd = new std::random_device();
@@ -42,7 +42,7 @@ void Random::enableMT()
 	m_dist = new std::uniform_real_distribution<float>(0, RAND_MAX);
 }
 
-void Random::disableMT()
+void Random::disableMT(void)
 {
 	m_bMT = false;
 	delete m_dist;
@@ -54,7 +54,7 @@ void Random::disableMT()
 	m_rd = nullptr;
 }
 
-void Random::SetSeedTime()
+void Random::SetSeedTime(void)
 {
 	this->m_nSeed = static_cast<unsigned int>(time(NULL));
 	srand(this->m_nSeed);

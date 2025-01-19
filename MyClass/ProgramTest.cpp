@@ -32,7 +32,6 @@ int main(void)
 
 void SortTest(void)
 {
-	using namespace RYUU;
 	//----- SORT -----
 	Sort Sort(10, 50);
 	int i;
@@ -89,7 +88,6 @@ void SortTest(void)
 
 void RandomTest(void)
 {
-	using namespace RYUU;
 	Random Rand;
 	Rand.enableMT();
 
@@ -109,7 +107,6 @@ void RandomTest(void)
 
 void PosTest(void)
 {
-	using namespace RYUU;
 	Pos<int> pos;
 	Pos<int> pos2;
 	Pos<int> pos3;

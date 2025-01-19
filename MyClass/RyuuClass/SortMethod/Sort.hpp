@@ -1,16 +1,13 @@
-/*
- * @file Sort.h
- * @brief ソートプログラムのヘッダ
- * @author 青木雄一郎
- * @date 作成日：03/10.2024
- * 
- * @date 03/10 関数の追加 [IntegerSort]
- * @date 03/11 関数の追加 [SetStrArrayData,StringSort]
- */
+ /*+===================================================================
+	 File: Sort.hpp
+	 Summary: ソートプログラムのヘッダ
+	 Author: AT12C192 01 青木雄一郎
+	 Date: 03/10/2024 初回作成
+			 /10 関数の追加 [IntegerSort]
+			 /11 関数の追加 [SetStrArrayData,StringSort]
+ ===================================================================+*/
 #pragma once
 
-namespace RYUU
-{
 class Sort
 {
 private:
@@ -72,4 +69,3 @@ public:
 	void StringSort(char* Array, SORT_MODE mode) const;
 
 };
-}

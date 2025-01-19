@@ -1,18 +1,16 @@
-/*
- * @file OutPutLog.h
- * @brief デバッグなどで使用
- * @author 青木雄一郎
- * @date 作成日：04/05/2024
- *
- * @date 04/05 関数の追加
- */
+ /*+===================================================================
+	 File: OutPutLog.hpp
+	 Summary: デバッグなどで使用
+	 Author: AT12C192 01 青木雄一郎
+	 Date: 04/05/2024 初回作成
+			 /10 関数の追加 [IntegerSort]
+			 /11 関数の追加 [SetStrArrayData,StringSort]
+ ===================================================================+*/
 #pragma once
 
 #include <sstream>
 #include <Windows.h>
 
-namespace RYUU
-{
 /// @brief エラーのメッセージボックスを表示する
 /// @param [msg] エラーメッセージ
 /// @memo ボタンはOKのみ
@@ -29,4 +27,3 @@ void Error(HWND hWnd, LPCSTR msg);
 /// @brief デバッグをコンソールに表示する
 /// @param [DebugMsg] 表示する文字列へのポインタ
 void OutputDebug(std::string DebugMsg);
-}

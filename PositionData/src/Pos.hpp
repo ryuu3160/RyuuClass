@@ -1,15 +1,11 @@
-/*
- * @file Pos.h
- * @brief 座標データの管理に使用
- * @author 青木雄一郎
- * @date 作成日：04/14/2024
- *
- * @date 04/14 基盤作成
- */
+ /*+===================================================================
+	 File: Pos.hpp
+	 Summary: 座標データの管理に使用
+	 Author: AT12C192 01 青木雄一郎
+	 Date: 04/14/2024 初回作成
+ ===================================================================+*/
 #pragma once
 
-namespace RYUU
-{
 template <typename T>
 class Pos
 {
@@ -107,25 +103,24 @@ public:
 
 
 };
-}
 
 template<typename T>
-RYUU::Pos<T>::Pos() : m_x(0), m_y(0), m_z(0)
+Pos<T>::Pos() : m_x(0), m_y(0), m_z(0)
 {
 }
 template<typename T>
-inline RYUU::Pos<T>::~Pos()
+inline Pos<T>::~Pos()
 {
 }
 
 template <typename T>
-void RYUU::Pos<T>::SetPos(T x, T y)
+void Pos<T>::SetPos(T x, T y)
 {
 	m_x = x;
 	m_y = y;
 }
 template <typename T>
-void RYUU::Pos<T>::SetPos(T x, T y, T z)
+void Pos<T>::SetPos(T x, T y, T z)
 {
 	m_x = x;
 	m_y = y;
@@ -133,7 +128,7 @@ void RYUU::Pos<T>::SetPos(T x, T y, T z)
 }
 
 template<typename T>
-void RYUU::Pos<T>::SetPos(const Pos pos)
+void Pos<T>::SetPos(const Pos pos)
 {
 	this->m_x = pos.m_x;
 	this->m_y = pos.m_y;
@@ -141,7 +136,7 @@ void RYUU::Pos<T>::SetPos(const Pos pos)
 }
 
 template<typename T>
-inline void RYUU::Pos<T>::GetPos(T& n,const char* type) const
+inline void Pos<T>::GetPos(T& n,const char* type) const
 {
 	int num;
 	if (type == "x")
@@ -178,7 +173,7 @@ inline void RYUU::Pos<T>::GetPos(T& n,const char* type) const
 }
 
 template<typename T>
-inline void RYUU::Pos<T>::GetPos(T& n1, T& n2, const char* type) const
+inline void Pos<T>::GetPos(T& n1, T& n2, const char* type) const
 {
 	int num;
 	if (type == "xy")
@@ -217,7 +212,7 @@ inline void RYUU::Pos<T>::GetPos(T& n1, T& n2, const char* type) const
 }
 
 template<typename T>
-inline void RYUU::Pos<T>::GetPos(T& x, T& y, T& z) const
+inline void Pos<T>::GetPos(T& x, T& y, T& z) const
 {
 	x = m_x;
 	y = m_y;
@@ -225,7 +220,7 @@ inline void RYUU::Pos<T>::GetPos(T& x, T& y, T& z) const
 }
 
 template<typename T>
-RYUU::Pos<T> RYUU::Pos<T>::operator+(const Pos &rhs)
+Pos<T> Pos<T>::operator+(const Pos &rhs)
 {
 	Pos Return;
 
@@ -237,7 +232,7 @@ RYUU::Pos<T> RYUU::Pos<T>::operator+(const Pos &rhs)
 }
 
 template<typename T>
-void RYUU::Pos<T>::operator+=(const Pos &rhs)
+void Pos<T>::operator+=(const Pos &rhs)
 {
 	this->m_x += rhs.m_x;
 	this->m_y += rhs.m_y;
@@ -245,7 +240,7 @@ void RYUU::Pos<T>::operator+=(const Pos &rhs)
 }
 
 template<typename T>
-RYUU::Pos<T> RYUU::Pos<T>::operator-(const Pos &rhs)
+Pos<T> Pos<T>::operator-(const Pos &rhs)
 {
 	Pos Return;
 
@@ -257,7 +252,7 @@ RYUU::Pos<T> RYUU::Pos<T>::operator-(const Pos &rhs)
 }
 
 template<typename T>
-void RYUU::Pos<T>::operator-=(const Pos& rhs)
+void Pos<T>::operator-=(const Pos& rhs)
 {
 	this->m_x -= rhs.m_x;
 	this->m_y -= rhs.m_y;
@@ -265,7 +260,7 @@ void RYUU::Pos<T>::operator-=(const Pos& rhs)
 }
 
 template<typename T>
-int RYUU::Pos<T>::operator==(const Pos& rhs)
+int Pos<T>::operator==(const Pos& rhs)
 {
 	int result = 0;
 

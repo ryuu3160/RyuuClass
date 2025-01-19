@@ -10,8 +10,8 @@
 #pragma once
 
 //===== METHOD =====
-#include "RyuuClass/SortMethod/Sort.h"
-#include "RyuuClass/RandomModule/Random.h"
-#include "RyuuClass/OutPutLog/OutPutLog.h"
-#include "RyuuClass/PositionData/Pos.h"
-#include "RyuuClass/AssetsLoader/AssetsLoader.h"
+#include "RyuuClass/SortMethod/Sort.hpp"
+#include "RyuuClass/RandomModule/Random.hpp"
+#include "RyuuClass/OutPutLog/OutPutLog.hpp"
+#include "RyuuClass/PositionData/Pos.hpp"
+#include "RyuuClass/AssetsLoader/AssetsLoader.hpp"
